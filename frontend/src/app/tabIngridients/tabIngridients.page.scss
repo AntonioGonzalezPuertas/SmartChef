@@ -1,0 +1,39 @@
+ion-content {
+  --background: #edf0f7; /* Sets a light background color */
+}
+ion-list {
+  --background: #edf0f7; /* Sets a light background color */
+}
+.grid-list {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fill, minmax(400px, 400px));
+  gap: 5px;
+  justify-content: center; /* Center the grid items horizontally */
+
+  background: transparent; /* Ensure grid-list background is transparent */
+}
+
+.category-row {
+  margin-bottom: 1rem;
+}
+
+.category-title {
+  margin: 0 0 0.5rem 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.slider-row {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding-left: 1rem;
+  scroll-snap-type: x mandatory;
+}
+
+.slider-row app-ingridient {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}

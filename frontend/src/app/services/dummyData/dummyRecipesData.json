@@ -9,10 +9,21 @@
       { "id": "2", "quantity": "100" },
       { "id": "3", "quantity": "50" }
     ],
+    "Instructions": [
+      "Boil water in a large pot.",
+      "Add salt and cook spaghetti according to package instructions.",
+      "In a separate pan, heat olive oil and sauté garlic until golden.",
+      "Add chopped tomatoes and cook until soft.",
+      "Season with salt, pepper, and basil.",
+      "Drain spaghetti and toss with the sauce.",
+      "Serve with grated Parmesan cheese."
+    ],
+    "cookingTime": 30,
+    "cost": 5.99,
     "photos": [
-      "assets/1/Screenshot1.png",
-      "assets/1/Screenshot2.png",
-      "assets/1/Screenshot3.png"
+      "https://i0.wp.com/thekitchendivision.com/wp-content/uploads/2024/10/f37035ae115c562eb5fad2add0e791e10b3d3a549e7625ad3480612fe4736ddc.jpg?resize=1152%2C1536&ssl=1",
+      "https://i0.wp.com/thekitchendivision.com/wp-content/uploads/2024/10/52afcf29dd941ea8f53df5f5fe898589455b7c9745f4389a8ab4753936b78011.jpg?resize=1152%2C1536&ssl=1",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy2wboIWrd2-Lr_H_spGhGbvV46PUWfjAtCw&s"
     ],
     "createdAt": "2024-05-01T10:00:00Z",
     "updatedAt": "2024-05-20T15:00:00Z"
@@ -27,10 +38,18 @@
       { "id": "5", "quantity": "150" },
       { "id": "6", "quantity": "75" }
     ],
+    "Instructions": [
+      "Heat oil in a pan and sauté onions until golden.",
+      "Add ginger-garlic paste and cook for a minute.",
+      "Stir in chopped tomatoes and cook until soft.",
+      "Add chicken pieces and cook until browned.",
+      "Mix in curry powder, salt, and water; simmer until chicken is cooked through.",
+      "Garnish with cilantro and serve with rice or naan."
+    ],
     "photos": [
-      "assets/2/Screenshot1.png",
-      "assets/2/Screenshot2.png",
-      "assets/2/Screenshot3.png"
+      "https://www.allrecipes.com/thmb/FL-xnyAllLyHcKdkjUZkotVlHR8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/46822-indian-chicken-curry-ii-DDMFS-4x3-39160aaa95674ee395b9d4609e3b0988.jpg",
+      "https://vaya.in/recipes/wp-content/uploads/2019/03/Chicken-curry-and-Rice.jpg",
+      "https://realfood.tesco.com/media/images/Tesco-RFO-Chicken-Tomato-Spiced-Curry-Winter18-1400x919-6cec43a2-75a6-47c5-97fa-eef420fa1831-0-1400x919.jpg"
     ],
     "createdAt": "2024-05-02T11:00:00Z",
     "updatedAt": "2024-05-21T16:00:00Z"

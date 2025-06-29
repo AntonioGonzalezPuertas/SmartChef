@@ -1,0 +1,73 @@
+.ingridient-card {
+  border-radius: 12px;
+  width: 100px;
+  height: 100px;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+
+  .ingridient-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+  }
+
+  ion-card-title {
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
+    background: rgba(255, 255, 255, 0.85);
+    color: #222;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    z-index: 2;
+    max-width: 84px;
+    overflow: hidden;
+    text-overflow: unset;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.1;
+    text-align: left; /* Ensure left justification */
+    justify-content: flex-start; /* For flex containers, just in case */
+  }
+
+  .corner-triangle {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-bottom: 36px solid #3880ff; /* triangle color and size */
+    border-left: 36px solid transparent;
+    z-index: 3;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  .triangle-number {
+    position: absolute;
+    right: 4px;
+    bottom: 2px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    z-index: 4;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .triangle-low {
+    border-bottom-color: #eb445a; // red for low stock
+  }
+
+  .triangle-ok {
+    border-bottom-color: #2dd36f; // green for ok stock
+  }
+}

@@ -17,9 +17,11 @@ export const routes: Routes = [
           import('../tabRecipes/tabRecipes.page').then((m) => m.tabRecipesPage),
       },
       {
-        path: 'stock',
+        path: 'ingridient',
         loadComponent: () =>
-          import('../tabStock/tabStock.page').then((m) => m.tabStockPage),
+          import('../tabIngridients/tabIngridients.page').then(
+            (m) => m.tabIngridientsPage
+          ),
       },
       {
         path: '',

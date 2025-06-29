@@ -1,0 +1,17 @@
+ion-content {
+  --background: #edf0f7; /* Sets a light background color */
+}
+ion-list {
+  --background: #edf0f7; /* Sets a light background color */
+}
+.grid-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center cards horizontally */
+  background: transparent;
+}
+
+.grid-list > * {
+  flex: 0 1 400px; /* Each card can grow up to 400px */
+  max-width: 100%;
+}

@@ -1,0 +1,64 @@
+.recipe-card {
+  border-radius: 30px;
+  max-width: 400px;
+  width: 90%;
+  margin-bottom: 0px; // Reduce vertical space between cards (was likely larger before)
+
+  ion-card-title {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  ion-chip {
+    margin: 4px 6px 4px 0;
+  }
+
+  .photo-grid {
+    display: flex;
+    gap: 10px;
+    margin-top: 0.6rem;
+    margin-bottom: 1rem;
+
+    .recipe-photo {
+      width: 45%;
+      height: 100px;
+      border-radius: 20px;
+      object-fit: cover;
+      overflow: hidden;
+    }
+  }
+
+  .info-row {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: #444;
+    margin-top: 0.4rem;
+
+    ion-icon {
+      margin-right: 0.5rem;
+    }
+
+    .value {
+      margin-left: auto;
+      font-weight: 500;
+    }
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+
+    ion-button {
+      --background: #007bff;
+      --color: white;
+      --border-radius: 20px;
+      padding: 8px 16px;
+
+      &.secondary {
+        --background: #6c757d;
+      }
+    }
+  }
+}

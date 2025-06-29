@@ -1,18 +1,22 @@
-@if (recipes.length == 0) {
-<ion-list>
-  <ion-item>
-    <ion-label>There are no recipes</ion-label>
-  </ion-item>
-</ion-list>
-} @else {
-<ion-list>
-  @for (recipe of recipes; track recipe.id) {
-  <ion-item>
-    <ion-label>
-      <h2>{{ recipe.title }}</h2>
-      <p>{{ recipe.description }}</p>
-    </ion-label>
-  </ion-item>
+<ion-content>
+  <!-- Search Field -->
+  <app-search
+    [items]="recipes"
+    [selectedCategories]="selectedCategories"
+    (filteredItems)="onFilteredRecipes($event)"
+  >
+  </app-search>
+  @if (recipes.length == 0) {
+  <ion-list>
+    <ion-item>
+      <ion-label>There are no recipes</ion-label>
+    </ion-item>
+  </ion-list>
+  } @else {
+  <ion-list class="grid-list">
+    @for (recipe of filteredRecipes; track recipe.id) {
+    <app-recipe [recipe]="recipe"></app-recipe>
+    }
+  </ion-list>
   }
-</ion-list>
-}
+</ion-content>

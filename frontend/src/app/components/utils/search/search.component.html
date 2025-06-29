@@ -1,0 +1,11 @@
+<div class="search-container">
+  <ion-item class="search-field">
+    <ion-input
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="updateFilteredItems()"
+      placeholder="Search by ..."
+      clearInput
+    >
+    </ion-input>
+  </ion-item>
+</div>

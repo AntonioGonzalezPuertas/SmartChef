@@ -1,0 +1,47 @@
+<ion-card class="recipe-card">
+  <ion-card-header>
+    <ion-card-title>{{ recipe.title }}</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    @for (category of recipe.categories; track category) {
+    <ion-chip>
+      <ion-label>{{ category }}</ion-label>
+    </ion-chip>
+    }
+
+    <div class="section-title with-icon">
+      <span>Photos</span>
+    </div>
+
+    <div class="photo-grid">
+      <ion-img
+        *ngFor="let photo of recipe.photos"
+        [src]="photo"
+        class="recipe-photo"
+      ></ion-img>
+    </div>
+
+    <div class="info-row">
+      <ion-icon name="time-outline"></ion-icon>
+      <span>Cooking time</span>
+      <span class="value">{{ recipe.cookingTime }} min</span>
+    </div>
+
+    <div class="info-row">
+      <ion-icon name="cash-outline"></ion-icon>
+      <span>Cost</span>
+      <span class="value">${{ recipe.cost }}</span>
+    </div>
+
+    <div class="actions">
+      <ion-button fill="clear"
+        ><ion-icon name="play"> Start</ion-icon></ion-button
+      >
+      <ion-button fill="clear"><ion-icon name="basket"></ion-icon></ion-button>
+      <ion-button fill="clear"
+        ><ion-icon name="star-outline"></ion-icon
+      ></ion-button>
+    </div>
+  </ion-card-content>
+</ion-card>

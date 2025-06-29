@@ -7,6 +7,8 @@ export interface Recipe {
   ingridients: RecipeIngridient[];
   description: string;
   photos: string[];
+  cost: number;
+  cookingTime: number; // in minutes
   createdAt: Date;
   updatedAt: Date;
 }
