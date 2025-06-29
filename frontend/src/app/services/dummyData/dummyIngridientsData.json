@@ -1,0 +1,15 @@
+[
+  {
+    "id": "1",
+    "title": "Tomato",
+    "categories": ["Vegetables"],
+    "shops": ["Local Market", "Lidel"],
+    "units": "kg",
+    "description": "",
+    "photo": "assets/1/Screenshot1.png",
+    "price": 100,
+    "price_unit": "CHF",
+    "createdAt": "2024-05-01T10:00:00Z",
+    "updatedAt": "2024-05-20T15:00:00Z"
+  }
+]

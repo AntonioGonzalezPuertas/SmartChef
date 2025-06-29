@@ -19,6 +19,6 @@ import { ExploreContainerComponent } from '../explore-container/explore-containe
     ExploreContainerComponent,
   ],
 })
-export class homePage {
+export class tabHomePage {
   constructor() {}
 }

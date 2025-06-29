@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "title": "Spaguetti Pomodoro",
+    "categories": ["Pasta"],
+    "description": "",
+    "ingridients": [
+      { "id": "1", "quantity": "200" },
+      { "id": "2", "quantity": "100" },
+      { "id": "3", "quantity": "50" }
+    ],
+    "photos": [
+      "assets/1/Screenshot1.png",
+      "assets/1/Screenshot2.png",
+      "assets/1/Screenshot3.png"
+    ],
+    "createdAt": "2024-05-01T10:00:00Z",
+    "updatedAt": "2024-05-20T15:00:00Z"
+  },
+  {
+    "id": "2",
+    "title": "Chicken Curry",
+    "categories": ["Curry", "Chicken"],
+    "description": "",
+    "ingridients": [
+      { "id": "4", "quantity": "300" },
+      { "id": "5", "quantity": "150" },
+      { "id": "6", "quantity": "75" }
+    ],
+    "photos": [
+      "assets/2/Screenshot1.png",
+      "assets/2/Screenshot2.png",
+      "assets/2/Screenshot3.png"
+    ],
+    "createdAt": "2024-05-02T11:00:00Z",
+    "updatedAt": "2024-05-21T16:00:00Z"
+  }
+]

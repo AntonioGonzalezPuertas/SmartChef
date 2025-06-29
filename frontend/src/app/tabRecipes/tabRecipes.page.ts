@@ -1,14 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   IonHeader,
   IonToolbar,
   IonTitle,
   IonContent,
+  IonList,
+  IonItem,
+  IonLabel,
 } from '@ionic/angular/standalone';
-import { ExploreContainerComponent } from '../explore-container/explore-container.component';
+
+import { RecipesService } from '../services/recipes.service';
+import { Recipe } from '../models/recipe.model';
 
 @Component({
-  selector: 'app-tab2',
+  selector: 'app-tabRecipes',
   templateUrl: 'tabRecipes.page.html',
   styleUrls: ['tabRecipes.page.scss'],
   imports: [
@@ -16,9 +21,22 @@ import { ExploreContainerComponent } from '../explore-container/explore-containe
     IonToolbar,
     IonTitle,
     IonContent,
-    ExploreContainerComponent,
+    IonList,
+    IonItem,
+    IonLabel,
   ],
 })
-export class Tab2Page {
+export class tabRecipesPage {
+  private recipesService = inject(RecipesService);
+
+  public recipes: Recipe[] = [];
+
   constructor() {}
+
+  async ngOnInit() {
+    // Subscribe to recipes updates
+    this.recipesService.recipes$.subscribe((updatedRecipes: Recipe[]) => {
+      this.recipes = updatedRecipes;
+    });
+  }
 }

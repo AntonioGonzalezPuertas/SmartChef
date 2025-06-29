@@ -1,9 +1,18 @@
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Recipes</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Recipes page"></app-explore-container>
-</ion-content>
+@if (recipes.length == 0) {
+<ion-list>
+  <ion-item>
+    <ion-label>There are no recipes</ion-label>
+  </ion-item>
+</ion-list>
+} @else {
+<ion-list>
+  @for (recipe of recipes; track recipe.id) {
+  <ion-item>
+    <ion-label>
+      <h2>{{ recipe.title }}</h2>
+      <p>{{ recipe.description }}</p>
+    </ion-label>
+  </ion-item>
+  }
+</ion-list>
+}
