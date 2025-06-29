@@ -1,3 +1,23 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-header>
+    <ion-toolbar>
+      @if(showBackButton){
+      <ion-buttons slot="start">
+        <ion-button (click)="goBack()">
+          <ion-icon
+            name="arrow-back-outline"
+            color="primary"
+            slot="icon-only"
+          ></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      }
+      <div class="toolbar-content">
+        <ion-img src="./assets/icon/logo.png" class="logo"></ion-img>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-router-outlet></ion-router-outlet>
+  </ion-content>
 </ion-app>

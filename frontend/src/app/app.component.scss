@@ -1,0 +1,40 @@
+ion-header {
+  background-color: white; /* Light background color */
+  color: #343a40; /* Dark text color */
+}
+
+.toolbar-content {
+  display: flex; /* Enables flexbox layout */
+  align-items: center; /* Vertically aligns items */
+  justify-content: space-between; /* Pushes logo to the left and user info to the right */
+  width: 100%; /* Ensures the content spans the full width */
+}
+.logo {
+  height: 40px; /* Set a smaller height for the logo */
+  width: auto; /* Automatically adjust the width to maintain aspect ratio */
+  margin-right: 5px; /* Add spacing between the logo and the title */
+  vertical-align: middle; /* Align the logo with the text */
+  display: inline-block; /* Ensures the logo and text are on the same line */
+  margin-left: 5px; /* Add spacing between the logo and the title */
+}
+
+.user-info {
+  display: flex; /* Enables flexbox layout for the user info */
+  align-items: center; /* Vertically aligns the welcome text and logout icon */
+  gap: 10px; /* Adds spacing between the welcome text and the logout icon */
+}
+
+.welcome {
+  font-size: 1rem; /* Adjust font size for the welcome text */
+  color: #343a40; /* Dark text color */
+}
+
+.logout-icon {
+  cursor: pointer; /* Changes the cursor to a pointer on hover */
+  color: rgb(8, 8, 151); /* Red color for the logout icon */
+  transition: color 0.3s ease; /* Adds a smooth transition effect */
+}
+
+.logout-icon:hover {
+  color: #b52a2a; /* Darker red on hover */
+}
