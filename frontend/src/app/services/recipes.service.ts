@@ -1,4 +1,7 @@
-import { Injectable, OnInit } from '@angular/core';
+import { inject, Injectable, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
+
 import { environment } from 'src/environments/environment';
 
 import { Recipe } from '../models/recipe.model';
@@ -8,6 +11,8 @@ import { BehaviorSubject, of } from 'rxjs';
   providedIn: 'root',
 })
 export class RecipesService implements OnInit {
+  private httpClient = inject(HttpClient);
+
   private recipesSubject = new BehaviorSubject<Recipe[]>([]);
   public recipes$ = this.recipesSubject.asObservable();
 
@@ -36,5 +41,25 @@ export class RecipesService implements OnInit {
     }
   }
 
-  public async getRecipes(): Promise<any> {}
+  public async getRecipes(): Promise<any> {
+    const headers = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer `,
+      },
+    };
+    const recipes = await firstValueFrom(
+      this.httpClient.post(
+        environment.BASE_URL + '/recipes/findAll',
+        {},
+        headers
+      )
+    );
+    if (recipes) {
+      this.recipesSubject.next(recipes as Recipe[]);
+    } else {
+      console.error('Error fetching recipes:', recipes);
+    }
+    return recipes;
+  }
 }

@@ -1,4 +1,7 @@
-import { Injectable, OnInit } from '@angular/core';
+import { inject, Injectable, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
+
 import { environment } from 'src/environments/environment';
 
 import { Ingridient } from '../models/ingridient.model';
@@ -8,6 +11,8 @@ import { BehaviorSubject, of } from 'rxjs';
   providedIn: 'root',
 })
 export class IngridientService implements OnInit {
+  private httpClient = inject(HttpClient);
+
   private ingridientsSubject = new BehaviorSubject<Ingridient[]>([]);
   public ingridients$ = this.ingridientsSubject.asObservable();
 
@@ -36,5 +41,25 @@ export class IngridientService implements OnInit {
     }
   }
 
-  public async getIngridients(): Promise<any> {}
+  public async getIngridients(): Promise<any> {
+    const headers = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer `,
+      },
+    };
+    const ingridients = await firstValueFrom(
+      this.httpClient.post(
+        environment.BASE_URL + '/ingridients/findAll',
+        {},
+        headers
+      )
+    );
+    if (ingridients) {
+      this.ingridientsSubject.next(ingridients as Ingridient[]);
+    } else {
+      console.error('Error fetching ingridients:', ingridients);
+    }
+    return ingridients;
+  }
 }
