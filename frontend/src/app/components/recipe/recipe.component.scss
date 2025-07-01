@@ -45,47 +45,52 @@
     }
   }
 
-  .favorites {
-    ion-icon {
-      font-size: 2.5rem;
-      color: #ffcc00; /* Gold color for favorites */
-    }
-
-    ion-badge {
-      background-color: #ffcc00; /* Gold color for badge */
-      color: #222; /* Dark text for contrast */
-      font-size: 0.8rem;
-      padding: 2px 6px;
-      border-radius: 12px;
-    }
-  }
-
   .bottom-actions {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    gap: 32px; /* Adjust distance between icons */
-    width: 100%;
+    gap: 30px;
     margin-top: 24px;
     margin-bottom: 8px;
   }
 
   .icon-badge {
     position: relative;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .icon-badge ion-icon {
+  .icon-badge mat-icon {
     font-size: 2.5rem;
     color: #222;
+    cursor: pointer;
+    line-height: 1;
+    vertical-align: middle;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: auto;
   }
 
   .icon-badge ion-badge {
     position: absolute;
-    top: -8px;
-    right: -10px;
-    font-size: 1.2rem;
+    top: 0px;
+    right: 10px;
+    transform: translate(50%, -50%);
+    font-size: 1rem;
     padding: 2px 6px;
     border-radius: 8px;
+    z-index: 2;
+    min-width: 18px;
+    min-height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon-badge .favorite {
+    color: #ffcc00 !important; /* Bright yellow for favorite star */
   }
 }

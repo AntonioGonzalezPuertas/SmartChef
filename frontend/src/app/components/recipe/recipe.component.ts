@@ -2,6 +2,9 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RecipeIngredientsModalComponent } from '../recipe-ingredients-modal/recipe-ingredients-modal.component';
 import { RecipeInstructionsModalComponent } from '../recipe-instructions-modal/recipe-instructions-modal.component';
+import { ScheduleModalComponent } from '../schedule-modal/schedule-modal.component';
+import { MatIconModule } from '@angular/material/icon';
+
 import {
   ModalController,
   IonCard,
@@ -48,6 +51,7 @@ import { IngredientService } from 'src/app/services/ingredients.service';
     IonIcon,
     IonButton,
     IonBadge,
+    MatIconModule,
   ],
 })
 export class RecipeComponent implements OnInit {
@@ -118,5 +122,13 @@ export class RecipeComponent implements OnInit {
 
   toggleFavorite() {
     this.recipe.favorite = !this.recipe.favorite;
+  }
+
+  async schedule() {
+    const modal = await this.modalCtrl.create({
+      component: ScheduleModalComponent,
+      componentProps: { currentRecipe: this.recipe || [] },
+    });
+    await modal.present();
   }
 }

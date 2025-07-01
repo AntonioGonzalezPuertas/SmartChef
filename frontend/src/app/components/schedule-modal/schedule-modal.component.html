@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Meal Schedule</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="save()">Save</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">Cancel</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div class="header">
+    <h2>Add {{ currentRecipe?.title }}</h2>
+  </div>
+  @for (month of groupedDays; track month.name) {
+  <div class="month-group">
+    <h3 class="month-title">{{ month.name }}</h3>
+    <div class="days-list">
+      @for (day of month.days; track day.date) {
+      <div class="calendar-day" [class.today]="day.isToday">
+        <span class="date-label">{{ day.date | date : "EEE, MMM d" }}</span>
+
+        <!-- Lunch line -->
+        <div class="meal-section">
+          <strong>Lunch:</strong>
+          <ng-container *ngIf="day.lunchRecipes.length; else addLunch">
+            <span
+              class="assigned-recipe"
+              *ngFor="let recipe of day.lunchRecipes; let i = index"
+            >
+              {{ recipe.title }}
+              <ion-button
+                size="small"
+                fill="clear"
+                (click)="replaceRecipe(day, 'lunchRecipes', i)"
+              >
+                <mat-icon>swap_horiz</mat-icon>
+                Replace
+              </ion-button>
+            </span>
+          </ng-container>
+          <ng-template #addLunch>
+            <ion-button
+              size="small"
+              fill="outline"
+              (click)="addRecipe(day, 'lunchRecipes')"
+            >
+              <ion-icon name="add"></ion-icon>
+              Add Recipe
+            </ion-button>
+          </ng-template>
+        </div>
+
+        <!-- Dinner line -->
+        <div class="meal-section">
+          <strong>Dinner:</strong>
+          <ng-container *ngIf="day.dinnerRecipes.length; else addDinner">
+            <span
+              class="assigned-recipe"
+              *ngFor="let recipe of day.dinnerRecipes; let i = index"
+            >
+              {{ recipe.title }}
+              <ion-button
+                size="small"
+                fill="clear"
+                (click)="replaceRecipe(day, 'dinnerRecipes', i)"
+              >
+                <mat-icon>swap_horiz</mat-icon>
+                Replace
+              </ion-button>
+            </span>
+          </ng-container>
+          <ng-template #addDinner>
+            <ion-button
+              size="small"
+              fill="outline"
+              (click)="addRecipe(day, 'dinnerRecipes')"
+            >
+              <ion-icon name="add"></ion-icon>
+              Add Recipe
+            </ion-button>
+          </ng-template>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+  }
+</ion-content>
