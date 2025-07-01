@@ -17,10 +17,10 @@ export const routes: Routes = [
           import('../tabRecipes/tabRecipes.page').then((m) => m.tabRecipesPage),
       },
       {
-        path: 'ingridient',
+        path: 'ingredient',
         loadComponent: () =>
-          import('../tabIngridients/tabIngridients.page').then(
-            (m) => m.tabIngridientsPage
+          import('../tabIngredients/tabIngredients.page').then(
+            (m) => m.tabIngredientsPage
           ),
       },
       {

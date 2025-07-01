@@ -1,0 +1,12 @@
+<ion-card class="ingredient-card">
+  <ion-card-title>{{ ingredient.name }}</ion-card-title>
+  <ion-img [src]="ingredient.photo" class="ingredient-photo"></ion-img>
+  <div
+    class="corner-triangle"
+    [ngClass]="{
+      'triangle-low': ingredient.stock <= ingredient.min_stock,
+      'triangle-ok': ingredient.stock > ingredient.min_stock
+    }"
+  ></div>
+  <div class="triangle-number">{{ ingredient.stock }}</div>
+</ion-card>

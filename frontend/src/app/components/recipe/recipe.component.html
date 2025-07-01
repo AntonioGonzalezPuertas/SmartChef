@@ -1,6 +1,9 @@
 <ion-card class="recipe-card">
   <ion-card-header>
     <ion-card-title>{{ recipe.title }}</ion-card-title>
+    <div class="favorites">
+      <ion-icon name="star-outline"></ion-icon>
+    </div>
   </ion-card-header>
 
   <ion-card-content>
@@ -34,14 +37,14 @@
       <span class="value">${{ recipe.cost }}</span>
     </div>
 
-    <div class="actions">
-      <ion-button fill="clear"
-        ><ion-icon name="play"> Start</ion-icon></ion-button
-      >
-      <ion-button fill="clear"><ion-icon name="basket"></ion-icon></ion-button>
-      <ion-button fill="clear"
-        ><ion-icon name="star-outline"></ion-icon
-      ></ion-button>
+    <div class="bottom-actions">
+      <div class="icon-badge">
+        <ion-icon name="play"></ion-icon>
+      </div>
+      <div class="icon-badge">
+        <ion-icon name="basket"></ion-icon>
+        <ion-badge color="danger">{{ missingStock }}</ion-badge>
+      </div>
     </div>
   </ion-card-content>
 </ion-card>

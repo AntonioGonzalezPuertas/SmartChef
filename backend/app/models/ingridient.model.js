@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const ingridientSchema = new mongoose.Schema(
+const ingredientSchema = new mongoose.Schema(
   {
     name: String,
     categories: [String],
@@ -16,12 +16,12 @@ const ingridientSchema = new mongoose.Schema(
   }
 );
 
-ingridientSchema.method("toJSON", function () {
+ingredientSchema.method("toJSON", function () {
   const { __v, _id, ...object } = this.toObject();
   object.id = _id;
   return object;
 });
 
-const Ingridient = mongoose.model("Ingridient", ingridientSchema);
+const Ingredient = mongoose.model("Ingredient", ingredientSchema);
 
-module.exports = Ingridient;
+module.exports = Ingredient;

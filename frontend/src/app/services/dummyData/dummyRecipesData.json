@@ -4,12 +4,12 @@
     "title": "Spaguetti Pomodoro",
     "categories": ["Pasta"],
     "description": "",
-    "ingridients": [
-      { "id": "1", "quantity": "200" },
-      { "id": "2", "quantity": "100" },
-      { "id": "3", "quantity": "50" }
+    "ingredients": [
+      { "id": "1", "quantity": 1 },
+      { "id": "2", "quantity": 100 },
+      { "id": "3", "quantity": 50 }
     ],
-    "Instructions": [
+    "instructions": [
       "Boil water in a large pot.",
       "Add salt and cook spaghetti according to package instructions.",
       "In a separate pan, heat olive oil and sauté garlic until golden.",
@@ -33,12 +33,12 @@
     "title": "Chicken Curry",
     "categories": ["Curry", "Chicken"],
     "description": "",
-    "ingridients": [
-      { "id": "4", "quantity": "300" },
-      { "id": "5", "quantity": "150" },
-      { "id": "6", "quantity": "75" }
+    "ingredients": [
+      { "id": "4", "quantity": 300 },
+      { "id": "5", "quantity": 150 },
+      { "id": "6", "quantity": 75 }
     ],
-    "Instructions": [
+    "instructions": [
       "Heat oil in a pan and sauté onions until golden.",
       "Add ginger-garlic paste and cook for a minute.",
       "Stir in chopped tomatoes and cook until soft.",

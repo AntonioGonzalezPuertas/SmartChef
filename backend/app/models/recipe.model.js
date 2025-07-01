@@ -4,10 +4,10 @@ const recipeSchema = new mongoose.Schema(
   {
     title: String,
     categories: [String],
-    ingridients: [
+    ingredients: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Ingridient",
+        ref: "Ingredient",
         quantity: String,
       },
     ],

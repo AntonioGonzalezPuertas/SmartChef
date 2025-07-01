@@ -1,0 +1,25 @@
+<ion-content>
+  <!-- Search Field -->
+  <app-search
+    [items]="ingredients"
+    [selectedCategories]="selectedCategories"
+    (filteredItems)="onFilteredIngredients($event)"
+  >
+  </app-search>
+  @if (ingredients.length == 0) {
+  <ion-list>
+    <ion-item>
+      <ion-label>There are no ingredients</ion-label>
+    </ion-item>
+  </ion-list>
+  } @else { @for (group of getIngredientsByCategory(); track group.category) {
+  <div class="category-row">
+    <h3 class="category-title">{{ group.category }}</h3>
+    <div class="slider-row">
+      @for (ingredient of group.ingredients; track ingredient.id) {
+      <app-ingredient [ingredient]="ingredient"></app-ingredient>
+      }
+    </div>
+  </div>
+  } }
+</ion-content>

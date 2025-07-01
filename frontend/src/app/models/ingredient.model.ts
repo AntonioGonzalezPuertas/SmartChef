@@ -1,6 +1,6 @@
 import { Unit, Currency } from './units.model';
 
-export interface Ingridient {
+export interface Ingredient {
   id: string;
   name: string;
   categories: string[];

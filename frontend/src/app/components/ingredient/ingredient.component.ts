@@ -23,9 +23,9 @@ import {
 } from 'ionicons/icons';
 
 @Component({
-  selector: 'app-ingridient',
-  templateUrl: './ingridient.component.html',
-  styleUrls: ['./ingridient.component.scss'],
+  selector: 'app-ingredient',
+  templateUrl: './ingredient.component.html',
+  styleUrls: ['./ingredient.component.scss'],
   imports: [
     CommonModule,
     IonCard,
@@ -41,8 +41,8 @@ import {
     IonButton,
   ],
 })
-export class IngridientComponent implements OnInit {
-  @Input() ingridient: any;
+export class IngredientComponent implements OnInit {
+  @Input() ingredient: any;
 
   constructor() {
     addIcons({ basket, play, cashOutline, timeOutline, starOutline });

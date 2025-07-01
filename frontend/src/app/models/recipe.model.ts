@@ -1,10 +1,10 @@
-import { Ingridient } from './ingridient.model';
+import { Ingredient } from './ingredient.model';
 
 export interface Recipe {
   id: string;
   title: string;
   categories: string[];
-  ingridients: RecipeIngridient[];
+  ingredients: RecipeIngredient[];
   description: string;
   photos: string[];
   cost: number;
@@ -13,7 +13,7 @@ export interface Recipe {
   updatedAt: Date;
 }
 
-type RecipeIngridient = {
+type RecipeIngredient = {
   id: string;
-  quantity: string;
+  quantity: number;
 };
