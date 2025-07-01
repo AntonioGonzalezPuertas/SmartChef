@@ -94,5 +94,37 @@
     "price_unit": "CHF",
     "createdAt": "2024-05-01T10:00:00Z",
     "updatedAt": "2024-05-20T15:00:00Z"
+  },
+  {
+    "id": "7",
+    "name": "Carrot",
+    "categories": ["Vegetables"],
+    "shops": ["Local Market", "Lidel"],
+    "units": "kg",
+    "description": "",
+    "photo": "https://bcfresh.ca/wp-content/uploads/2021/11/Carrots.jpg",
+    "stock": 8,
+    "min_stock": 3,
+    "ordered": 0,
+    "price": 40,
+    "price_unit": "CHF",
+    "createdAt": "2024-05-01T10:00:00Z",
+    "updatedAt": "2024-05-20T15:00:00Z"
+  },
+  {
+    "id": "8",
+    "name": "Zucchini",
+    "categories": ["Vegetables"],
+    "shops": ["Local Market", "Lidel"],
+    "units": "piece",
+    "description": "",
+    "photo": "https://ferrymorse.com/cdn/shop/products/Organic-Squash-Dark-Green-Zucchini-Vegetable-Ferry-Morse.jpg?v=1608228104&width=940",
+    "stock": 5,
+    "min_stock": 2,
+    "ordered": 0,
+    "price": 35,
+    "price_unit": "CHF",
+    "createdAt": "2024-05-01T10:00:00Z",
+    "updatedAt": "2024-05-20T15:00:00Z"
   }
 ]

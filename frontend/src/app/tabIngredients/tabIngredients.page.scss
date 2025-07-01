@@ -24,7 +24,7 @@ ion-card {
 }
 
 .category-title {
-  margin: 0 0 0.5rem 1rem;
+  margin: 0 0 0 1rem;
   font-size: 1.2rem;
   font-weight: 700;
   color: #222;
@@ -32,29 +32,20 @@ ion-card {
 
 .slider-row {
   display: flex;
-  overflow: visible !important;
   gap: 10px;
   padding-left: 1rem;
-  scroll-snap-type: x mandatory;
-}
-
-.slider-row app-ingredient {
-  flex: 0 0 auto;
-  scroll-snap-align: start;
-  overflow: visible !important;
-}
-
-ion-card,
-.ingredient-card,
-.slider-row,
-.slider-row app-ingredient {
-  overflow: visible !important;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+  height: 115px;
+  align-items: flex-end; // Align children to the bottom
 }
 
 .ingredient-chip-wrapper {
+  flex: 0 0 auto; // Prevent shrinking, allow horizontal stacking
   position: relative;
   display: inline-block; // or flex if you want
-  overflow: visible;
 }
 
 .shopping-cart-chip {
