@@ -6,8 +6,8 @@
     "description": "",
     "ingredients": [
       { "id": "1", "quantity": 1 },
-      { "id": "2", "quantity": 100 },
-      { "id": "3", "quantity": 50 }
+      { "id": "2", "quantity": 1 },
+      { "id": "3", "quantity": 1 }
     ],
     "instructions": [
       "Boil water in a large pot.",

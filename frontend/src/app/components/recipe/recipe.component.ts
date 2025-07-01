@@ -1,6 +1,9 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RecipeIngredientsModalComponent } from '../recipe-ingredients-modal/recipe-ingredients-modal.component';
+
 import {
+  ModalController,
   IonCard,
   IonCardContent,
   IonCardHeader,
@@ -21,6 +24,7 @@ import {
   cashOutline,
   timeOutline,
   starOutline,
+  checkmarkCircle,
 } from 'ionicons/icons';
 
 import { IngredientService } from 'src/app/services/ingredients.service';
@@ -49,9 +53,17 @@ export class RecipeComponent implements OnInit {
   @Input() recipe: any;
   public missingStock: number = 0;
   private ingredientService = inject(IngredientService);
+  private modalCtrl = inject(ModalController);
 
   constructor() {
-    addIcons({ basket, play, cashOutline, timeOutline, starOutline });
+    addIcons({
+      basket,
+      play,
+      cashOutline,
+      timeOutline,
+      starOutline,
+      checkmarkCircle,
+    });
   }
 
   ngOnInit() {
@@ -71,5 +83,27 @@ export class RecipeComponent implements OnInit {
     });
 
     return missingCount;
+  }
+
+  async showIngredients() {
+    console.log('Showing ingredients for recipe:', this.recipe.title);
+    // Get all ingredients with stock info
+    const allIngredients = this.recipe.ingredients.map((ing: any) => {
+      const stockIng = this.ingredientService.getIngredientById(ing.id);
+      return {
+        ...ing,
+        name: stockIng?.name || 'Unknown',
+        stock: stockIng?.stock ?? 0,
+        inStock: stockIng ? ing.quantity <= stockIng.stock : false,
+        units: stockIng?.units || 'N/A',
+      };
+    });
+    console.log('Ingredients with stock info:', allIngredients);
+
+    const modal = await this.modalCtrl.create({
+      component: RecipeIngredientsModalComponent,
+      componentProps: { ingredients: allIngredients },
+    });
+    await modal.present();
   }
 }

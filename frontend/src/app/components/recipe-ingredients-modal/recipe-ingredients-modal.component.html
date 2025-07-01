@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ingredients</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    @for ( ing of ingredients; track ing) {
+    <ion-item>
+      <ion-label>
+        {{ ing.name }} ({{ ing.quantity }}{{ ing.units }})
+      </ion-label>
+      <ion-badge [color]="ing.inStock ? 'success' : 'danger'">
+        {{
+          ing.inStock
+            ? "In stock " + ing.stock
+            : "Missing " + (ing.quantity - ing.stock)
+        }}
+        {{ ing.units }}
+      </ion-badge>
+    </ion-item>
+    }
+  </ion-list>
+</ion-content>
