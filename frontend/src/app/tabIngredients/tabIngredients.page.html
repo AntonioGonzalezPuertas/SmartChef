@@ -17,9 +17,54 @@
     <h3 class="category-title">{{ group.category }}</h3>
     <div class="slider-row">
       @for (ingredient of group.ingredients; track ingredient.id) {
-      <app-ingredient [ingredient]="ingredient"></app-ingredient>
+      <div class="ingredient-chip-wrapper">
+        <app-ingredient
+          #ingredientComp
+          [ingredient]="ingredient"
+          (click)="clickAction(ingredient.id)"
+        ></app-ingredient>
+        @if ( ingredient.ordered ) {
+        <div class="shopping-cart-chip" *ngIf="ingredient.ordered">
+          <mat-icon>shopping_cart</mat-icon>
+          <span class="ordered-number">{{ ingredient.ordered }}</span>
+        </div>
+        }
+      </div>
       }
     </div>
   </div>
   } }
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <mat-icon>{{action}}</mat-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <span>Stock</span>
+
+      <ion-fab-button (click)="action= 'remove'">
+        <mat-icon>remove</mat-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="action= 'add'">
+        <mat-icon>add</mat-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="action= 'info_i'">
+        <mat-icon>info_i</mat-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+
+    <ion-fab-list side="start">
+      <span>Shopping</span>
+
+      <ion-fab-button (click)="action= 'shopping_cart_checkout'">
+        <mat-icon>shopping_cart_checkout</mat-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="action= 'remove_shopping_cart'">
+        <mat-icon>remove_shopping_cart</mat-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="action= 'add_shopping_cart'">
+        <mat-icon>add_shopping_cart</mat-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>

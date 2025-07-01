@@ -1,9 +1,6 @@
 <ion-card class="recipe-card">
   <ion-card-header>
     <ion-card-title>{{ recipe.title }}</ion-card-title>
-    <div class="favorites">
-      <ion-icon name="star-outline"></ion-icon>
-    </div>
   </ion-card-header>
 
   <ion-card-content>
@@ -47,6 +44,12 @@
         @if (missingStock > 0) {
         <ion-badge color="danger">{{ missingStock }}</ion-badge>
         }
+      </div>
+      <div class="favorites">
+        <ion-icon
+          [name]="recipe.favorite ? 'star' : 'star-outline'"
+          (click)="toggleFavorite()"
+        ></ion-icon>
       </div>
     </div>
   </ion-card-content>

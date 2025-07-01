@@ -4,6 +4,7 @@ export interface Recipe {
   id: string;
   title: string;
   categories: string[];
+  favorite: boolean;
   ingredients: RecipeIngredient[];
   description: string;
   photos: string[];

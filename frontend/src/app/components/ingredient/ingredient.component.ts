@@ -1,17 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+
 import {
   IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardSubtitle,
   IonCardTitle,
   IonImg,
   IonChip,
-  IonLabel,
-  IonNote,
   IonIcon,
-  IonButton,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import {
@@ -29,16 +25,11 @@ import {
   imports: [
     CommonModule,
     IonCard,
-    IonCardHeader,
     IonCardTitle,
-    IonCardSubtitle,
-    IonCardContent,
     IonImg,
     IonChip,
-    IonLabel,
-    IonNote,
     IonIcon,
-    IonButton,
+    MatIconModule,
   ],
 })
 export class IngredientComponent implements OnInit {
@@ -49,4 +40,23 @@ export class IngredientComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  public updateStock(action: string) {
+    if (action === 'add') {
+      this.ingredient.stock = this.ingredient.stock + 1;
+    } else if (action === 'remove' && this.ingredient.stock > 0) {
+      this.ingredient.stock = this.ingredient.stock - 1;
+    }
+  }
+
+  public updateOrdered(action: string) {
+    if (action === 'add') {
+      this.ingredient.ordered = this.ingredient.ordered + 1;
+    } else if (action === 'remove' && this.ingredient.ordered > 0) {
+      this.ingredient.ordered = this.ingredient.ordered - 1;
+    } else if (action === 'checkout' && this.ingredient.ordered > 0) {
+      this.ingredient.ordered = this.ingredient.ordered - 1;
+      this.ingredient.stock = this.ingredient.stock + 1;
+    }
+  }
 }

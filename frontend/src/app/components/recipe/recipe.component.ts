@@ -24,6 +24,7 @@ import {
   cashOutline,
   timeOutline,
   starOutline,
+  star,
   checkmarkCircle,
 } from 'ionicons/icons';
 
@@ -62,6 +63,7 @@ export class RecipeComponent implements OnInit {
       cashOutline,
       timeOutline,
       starOutline,
+      star,
       checkmarkCircle,
     });
   }
@@ -112,5 +114,9 @@ export class RecipeComponent implements OnInit {
       componentProps: { instructions: this.recipe.instructions || [] },
     });
     await modal.present();
+  }
+
+  toggleFavorite() {
+    this.recipe.favorite = !this.recipe.favorite;
   }
 }

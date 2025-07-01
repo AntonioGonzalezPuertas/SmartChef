@@ -1,10 +1,10 @@
 .ingredient-card {
+  position: relative; // Ensure the chip is positioned relative to the card
+  overflow: visible !important;
   border-radius: 12px;
   width: 100px;
   height: 100px;
   margin: 0;
-  position: relative;
-  overflow: hidden;
   padding: 0;
 
   .ingredient-photo {

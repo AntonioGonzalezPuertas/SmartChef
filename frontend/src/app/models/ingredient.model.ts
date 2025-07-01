@@ -9,6 +9,7 @@ export interface Ingredient {
   description: string;
   photo: string;
   stock: number;
+  ordered: number;
   min_stock: number;
   price: number;
   price_unit: Currency;
