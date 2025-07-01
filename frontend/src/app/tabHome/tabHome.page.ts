@@ -1,24 +1,41 @@
 import { Component } from '@angular/core';
 import {
-  IonHeader,
-  IonToolbar,
-  IonTitle,
   IonContent,
+  IonIcon,
+  IonItem,
+  IonLabel,
+  IonList,
 } from '@ionic/angular/standalone';
-import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 
+import { RecipeComponent } from '../components/recipe/recipe.component';
 @Component({
   selector: 'app-home',
-  templateUrl: 'tabhome.page.html',
-  styleUrls: ['tabhome.page.scss'],
-  imports: [
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonContent,
-    ExploreContainerComponent,
-  ],
+  templateUrl: './tabHome.page.html',
+  styleUrls: ['./tabHome.page.scss'],
+  standalone: true,
+  imports: [RecipeComponent, IonContent, IonIcon, IonList, IonItem, IonLabel],
 })
 export class tabHomePage {
-  constructor() {}
+  // Example data, replace with your real data/services
+  outOfStockIngredients = [{ name: 'Tomatoes' }, { name: 'Olive Oil' }];
+
+  weekMenu = [
+    {
+      name: 'Monday',
+      lunchRecipe: { title: 'Chicken Salad' },
+      dinnerRecipe: { title: 'Pasta Carbonara' },
+    },
+    {
+      name: 'Tuesday',
+      lunchRecipe: { title: 'Grilled Salmon' },
+      dinnerRecipe: { title: 'Vegetable Stir Fry' },
+    },
+    // ...add more days as needed
+  ];
+
+  recommendedRecipes = [
+    { title: 'Avocado Toast' /* ...other recipe data... */ },
+    { title: 'Quinoa Bowl' /* ...other recipe data... */ },
+    // ...add more recipes as needed
+  ];
 }

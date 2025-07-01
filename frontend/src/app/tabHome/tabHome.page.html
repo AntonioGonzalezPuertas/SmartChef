@@ -1,1 +1,46 @@
-<app-explore-container name="Home page"></app-explore-container>
+<ion-content class="ion-padding">
+  <!-- App Title and Slogan -->
+  <div class="home-header">
+    <h1>SmartChef</h1>
+    <p class="slogan">
+      Your smart kitchen companion for effortless meal planning!
+    </p>
+  </div>
+
+  <!-- Notifications: Ingredients with No Stock -->
+  <div class="notifications-section">
+    <h2>Notifications</h2>
+    @for(ing of outOfStockIngredients; track ing) {
+    <div class="notification-message">
+      <ion-icon name="alert-circle-outline" color="danger"></ion-icon>
+      <span>{{ ing.name }} is out of stock!</span>
+    </div>
+    }
+  </div>
+
+  <!-- Week Menu -->
+  <div class="week-menu-section">
+    <h2>This Week's Menu</h2>
+    <ion-list>
+      @for(day of weekMenu; track day) {
+      <ion-item>
+        <ion-label>
+          <strong>{{ day.name }}</strong><br />
+          Lunch: {{ day.lunchRecipe?.title || 'Not assigned' }}<br />
+          Dinner: {{ day.dinnerRecipe?.title || 'Not assigned' }}
+        </ion-label>
+      </ion-item>
+      }
+    </ion-list>
+  </div>
+
+  <!-- New Recipes Recommendations -->
+  <div class="recommendations-section">
+    <h2>New Recipe Recommendations</h2>
+    <div class="recommendations-list">
+      @for(recipe of recommendedRecipes; track recipe) {
+      <app-recipe [recipe]="recipe"></app-recipe>
+      }
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,93 @@
+.home-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+
+  h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #3880ff;
+    margin-bottom: 0.2rem;
+  }
+
+  .slogan {
+    font-size: 1.1rem;
+    color: #666;
+    margin: 0;
+  }
+}
+
+.notifications-section {
+  margin-bottom: 1.5rem;
+
+  h2 {
+    font-size: 1.2rem;
+    color: #eb445a;
+    margin-bottom: 0.5rem;
+  }
+
+  .notification-message {
+    display: flex;
+    align-items: center;
+    background: #fff4f4;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    color: #b00020;
+    font-weight: 500;
+    box-shadow: 0 1px 4px rgba(235, 68, 90, 0.07);
+
+    ion-icon {
+      margin-right: 0.6rem;
+      font-size: 1.3rem;
+    }
+  }
+}
+
+.week-menu-section {
+  margin-bottom: 1.5rem;
+
+  h2 {
+    font-size: 1.2rem;
+    color: #3880ff;
+    margin-bottom: 0.5rem;
+  }
+
+  ion-list {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  ion-item {
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    background: #f8fafc;
+    box-shadow: 0 1px 4px rgba(56, 128, 255, 0.06);
+  }
+
+  ion-label {
+    font-size: 1rem;
+    color: #222;
+  }
+}
+
+.recommendations-section {
+  margin-bottom: 1.5rem;
+
+  h2 {
+    font-size: 1.2rem;
+    color: #2dd36f;
+    margin-bottom: 0.5rem;
+  }
+
+  .recommendations-list {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+
+  app-recipe {
+    flex: 0 0 240px;
+    max-width: 240px;
+  }
+}
