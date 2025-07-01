@@ -1,7 +1,7 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RecipeIngredientsModalComponent } from '../recipe-ingredients-modal/recipe-ingredients-modal.component';
-
+import { RecipeInstructionsModalComponent } from '../recipe-instructions-modal/recipe-instructions-modal.component';
 import {
   ModalController,
   IonCard,
@@ -86,7 +86,6 @@ export class RecipeComponent implements OnInit {
   }
 
   async showIngredients() {
-    console.log('Showing ingredients for recipe:', this.recipe.title);
     // Get all ingredients with stock info
     const allIngredients = this.recipe.ingredients.map((ing: any) => {
       const stockIng = this.ingredientService.getIngredientById(ing.id);
@@ -98,11 +97,19 @@ export class RecipeComponent implements OnInit {
         units: stockIng?.units || 'N/A',
       };
     });
-    console.log('Ingredients with stock info:', allIngredients);
 
     const modal = await this.modalCtrl.create({
       component: RecipeIngredientsModalComponent,
       componentProps: { ingredients: allIngredients },
+    });
+    await modal.present();
+  }
+
+  async showInstructions() {
+    // Get the instructions for the recipe
+    const modal = await this.modalCtrl.create({
+      component: RecipeInstructionsModalComponent,
+      componentProps: { instructions: this.recipe.instructions || [] },
     });
     await modal.present();
   }
