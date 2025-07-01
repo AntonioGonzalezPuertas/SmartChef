@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>New Ingredient</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="save()" [disabled]="form.invalid">Save</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()" color="medium">Cancel</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <form [formGroup]="form" class="ingredient-form" (ngSubmit)="save()">
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input formControlName="name" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Categories</ion-label>
+      <ion-input formControlName="categories"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Shops</ion-label>
+      <ion-input formControlName="shops"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Units</ion-label>
+      <ion-input formControlName="units"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea formControlName="description"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Photo URL</ion-label>
+      <ion-input formControlName="photo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Stock</ion-label>
+      <ion-input type="number" formControlName="stock"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Min Stock</ion-label>
+      <ion-input type="number" formControlName="min_stock"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Ordered</ion-label>
+      <ion-input type="number" formControlName="ordered"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Price</ion-label>
+      <ion-input type="number" formControlName="price"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Price Unit</ion-label>
+      <ion-input formControlName="price_unit"></ion-input>
+    </ion-item>
+
+    <div class="form-actions">
+      <ion-button
+        expand="block"
+        type="submit"
+        [disabled]="form.invalid"
+        color="primary"
+      >
+        Save Ingredient
+      </ion-button>
+    </div>
+  </form>
+</ion-content>

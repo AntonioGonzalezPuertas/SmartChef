@@ -72,4 +72,30 @@ export class IngredientService {
     }
     return ingredients;
   }
+
+  public async addIngredient(ingredient: Ingredient) {
+    const currentIngredients = this.ingredientsSubject.getValue();
+    this.ingredientsSubject.next([...(<any>currentIngredients), ingredient]);
+
+    // const headers = {
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     Authorization: `Bearer `,
+    //   },
+    // };
+    // const result = await firstValueFrom(
+    //   this.httpClient.post(
+    //     environment.BASE_URL + '/ingredients/add',
+    //     {},
+    //     headers
+    //   )
+    // );
+    // if (ingredient) {
+    //   const currentIngredients = this.ingredientsSubject.getValue();
+    //   this.ingredientsSubject.next([...(<any>currentIngredients), result]);
+    // } else {
+    //   console.error('Error adding ingredient:', result);
+    // }
+    // return result;
+  }
 }

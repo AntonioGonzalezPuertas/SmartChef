@@ -1,6 +1,6 @@
 import { ViewChildren, QueryList, Component, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-
+import { ModalController } from '@ionic/angular/standalone';
 import {
   IonList,
   IonItem,
@@ -17,7 +17,8 @@ import { Ingredient } from '../models/ingredient.model';
 import { IngredientComponent } from '../components/ingredient/ingredient.component';
 import { CommonModule } from '@angular/common';
 import { SearchComponent } from '../components/utils/search/search.component';
-
+import { IngredientDetailModalComponent } from '../components/ingredient-detail-modal/ingredient-detail-modal.component';
+import { IngredientNewModalComponent } from '../components/ingredient-new-modal/ingredient-new-modal.component';
 @Component({
   selector: 'app-tabIngredients',
   templateUrl: 'tabIngredients.page.html',
@@ -29,6 +30,7 @@ import { SearchComponent } from '../components/utils/search/search.component';
     IonItem,
     IonLabel,
     IngredientComponent,
+    IngredientDetailModalComponent,
     IonContent,
     IonIcon,
     IonFab,
@@ -50,6 +52,7 @@ export class tabIngredientsPage {
   public action: String = 'info_i';
 
   public ingredients: Ingredient[] = [];
+  private modalCtrl = inject(ModalController);
 
   constructor() {}
 
@@ -88,14 +91,14 @@ export class tabIngredientsPage {
     }));
   }
 
-  public clickAction(ingredientId: string) {
+  public async clickAction(ingredientId: string) {
     // Find the child component for the clicked ingredient
     const comp = this.ingredientComps.find(
       (c) => c.ingredient.id === ingredientId
     );
 
     if (this.action === 'info_i') {
-      console.log('Info icon clicked');
+      await this.openInfo(ingredientId);
     } else if (this.action === 'remove') {
       console.log('Remove icon clicked');
       comp!.updateStock('remove');
@@ -108,5 +111,24 @@ export class tabIngredientsPage {
     } else if (this.action === 'add_shopping_cart') {
       comp!.updateOrdered('add');
     }
+  }
+
+  async addNew() {
+    this.action = 'info_i';
+
+    const modal = await this.modalCtrl.create({
+      component: IngredientNewModalComponent,
+    });
+    await modal.present();
+  }
+
+  async openInfo(id: string) {
+    let ingredient = this.filteredIngredients.find((i) => i.id === id);
+
+    const modal = await this.modalCtrl.create({
+      component: IngredientDetailModalComponent,
+      componentProps: { ingredient: ingredient || {} },
+    });
+    await modal.present();
   }
 }
