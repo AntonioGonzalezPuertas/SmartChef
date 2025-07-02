@@ -55,4 +55,7 @@
       <small>Updated: {{ ingredient.updatedAt | date : "short" }}</small>
     </div>
   </div>
+  <ion-label color="danger" (click)="deleteIngredient()"
+    >Delete Ingredient</ion-label
+  >
 </ion-content>

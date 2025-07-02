@@ -19,9 +19,10 @@ import {
   IonContent,
   IonTitle,
   IonButton,
+  IonLabel,
 } from '@ionic/angular/standalone';
 import { IngredientNewModalComponent } from '../ingredient-new-modal/ingredient-new-modal.component';
-
+import { IngredientService } from 'src/app/services/ingredients.service';
 @Component({
   selector: 'app-ingredient-detail',
   templateUrl: './ingredient-detail-modal.component.html',
@@ -37,11 +38,14 @@ import { IngredientNewModalComponent } from '../ingredient-new-modal/ingredient-
     IonTitle,
     IonButton,
     IonIcon,
+    IonLabel,
   ],
 })
 export class IngredientDetailModalComponent {
   @Input() ingredient: any;
   private modalCtrl = inject(ModalController);
+  private ingredientService = inject(IngredientService);
+
   constructor() {
     addIcons({
       pricetagOutline,
@@ -62,6 +66,11 @@ export class IngredientDetailModalComponent {
     this.ingredient = await modal.onWillDismiss().then((result) => {
       return result.data;
     });
+  }
+
+  async deleteIngredient() {
+    this.ingredientService.deleteIngredient(this.ingredient.id);
+    this.dismiss();
   }
 
   dismiss() {

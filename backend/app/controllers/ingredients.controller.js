@@ -52,4 +52,22 @@ ingredientsController.update = async function (req, res) {
   }
 };
 
+ingredientsController.delete = async function (req, res) {
+  const ingredientId = req.params.id;
+  if (!mongoose.Types.ObjectId.isValid(ingredientId)) {
+    return res.status(400).json({ message: "Invalid ingredient ID" });
+  }
+  try {
+    const deletedIngredient = await Ingredient.findByIdAndDelete(ingredientId);
+    if (!deletedIngredient) {
+      return res.status(404).json({ message: "Ingredient not found" });
+    }
+    res.status(200).json({ message: "Ingredient deleted successfully" });
+  } catch (err) {
+    res
+      .status(400)
+      .json({ message: "Ingredient deletion failed", error: err.message });
+  }
+};
+
 module.exports = ingredientsController;

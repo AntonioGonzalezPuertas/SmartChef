@@ -124,4 +124,30 @@ export class IngredientService {
     }
     return result;
   }
+
+  public async deleteIngredient(id: string): Promise<any> {
+    const headers = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer `,
+      },
+    };
+    const result = await firstValueFrom(
+      this.httpClient.delete(
+        environment.BASE_URL + '/ingredients/' + id,
+        headers
+      )
+    );
+    console.log('delete result', result);
+    if (result) {
+      const currentIngredients = this.ingredientsSubject.getValue();
+      const updatedIngredients = currentIngredients.filter(
+        (ingredient) => ingredient.id !== id
+      );
+      this.ingredientsSubject.next(updatedIngredients);
+    } else {
+      console.error('Error deleting ingredient:', result);
+    }
+    return result;
+  }
 }

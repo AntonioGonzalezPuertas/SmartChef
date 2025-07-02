@@ -65,3 +65,9 @@
   font-size: 0.9rem;
   margin-top: 1rem;
 }
+
+ion-label[color="danger"] {
+  display: block;
+  text-align: right;
+  cursor: pointer;
+}
