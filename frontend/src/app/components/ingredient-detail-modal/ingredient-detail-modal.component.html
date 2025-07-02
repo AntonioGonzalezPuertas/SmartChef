@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ingredient</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Close</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-button (click)="editIngredient()">Edit</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <div class="ingredient-detail-container">
+    <img
+      class="ingredient-photo"
+      [src]="ingredient.photo"
+      [alt]="ingredient.name"
+    />
+    <h2 class="ingredient-name">{{ ingredient.name }}</h2>
+    <div class="ingredient-meta">
+      <div>
+        <ion-icon name="pricetag-outline"></ion-icon>
+        <span class="category">{{ ingredient.categories?.join(", ") }}</span>
+      </div>
+      <div>
+        <ion-icon name="storefront-outline"></ion-icon>
+        <span class="shops">{{ ingredient.shops?.join(", ") }}</span>
+      </div>
+      <div>
+        <ion-icon name="cube-outline"></ion-icon>
+        <span>Unit: {{ ingredient.units }}</span>
+      </div>
+      <div>
+        <ion-icon name="cash-outline"></ion-icon>
+        <span>Price: {{ ingredient.price }} {{ ingredient.price_unit }}</span>
+      </div>
+      <div>
+        <ion-icon name="bar-chart-outline"></ion-icon>
+        <span>Stock: {{ ingredient.stock }} {{ ingredient.units }}</span>
+        <span class="min-stock"
+          >(Min: {{ ingredient.min_stock }} {{ ingredient.units }})</span
+        >
+      </div>
+      <div *ngIf="ingredient.ordered && ingredient.ordered > 0">
+        <ion-icon name="cart-outline"></ion-icon>
+        <span>Ordered: {{ ingredient.ordered }}</span>
+      </div>
+      <div *ngIf="ingredient.description">
+        <ion-icon name="information-circle-outline"></ion-icon>
+        <span>{{ ingredient.description }}</span>
+      </div>
+    </div>
+    <div class="ingredient-dates">
+      <small>Created: {{ ingredient.createdAt | date : "short" }}</small>
+      <small>Updated: {{ ingredient.updatedAt | date : "short" }}</small>
+    </div>
+  </div>
+</ion-content>

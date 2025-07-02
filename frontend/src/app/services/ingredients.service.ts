@@ -98,4 +98,14 @@ export class IngredientService {
     // }
     // return result;
   }
+
+  public async updateIngredient(ingredient: Ingredient) {
+    console.log('Updating ingredient:', ingredient);
+    const currentIngredients = this.ingredientsSubject.getValue();
+    const index = currentIngredients.findIndex((x) => x.id === ingredient.id);
+    if (index !== -1) {
+      currentIngredients[index] = ingredient;
+      this.ingredientsSubject.next([...currentIngredients]);
+    }
+  }
 }
