@@ -78,7 +78,6 @@ export class IngredientNewModalComponent {
   async save() {
     if (this.form.valid) {
       const value = this.form.value;
-      console.log('Form value:', value);
       // Convert comma-separated strings to arrays
       // Only split if value is a string
       value.categories = Array.isArray(value.categories)
@@ -97,10 +96,10 @@ export class IngredientNewModalComponent {
           this.ingredient.id,
           value
         );
-        console.log('Ingredient updated:', result);
+        //console.log('Ingredient updated:', result);
       } else {
         const result = await this.ingredientService.addIngredient(value);
-        console.log('Ingredient added:', result);
+        //console.log('Ingredient added:', result);
       }
 
       this.modalCtrl.dismiss(value);
