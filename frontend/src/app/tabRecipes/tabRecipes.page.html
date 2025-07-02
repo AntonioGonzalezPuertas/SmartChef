@@ -15,8 +15,14 @@
   } @else {
   <ion-list class="grid-list">
     @for (recipe of filteredRecipes; track recipe.id) {
-    <app-recipe [recipe]="recipe"></app-recipe>
+    <app-recipe [recipe]="recipe" (click)="openRecipe(recipe)"></app-recipe>
     }
   </ion-list>
   }
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="addNew()">
+      <mat-icon>add</mat-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

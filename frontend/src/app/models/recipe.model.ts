@@ -6,9 +6,11 @@ export interface Recipe {
   categories: string[];
   favorite: boolean;
   ingredients: RecipeIngredient[];
+  instructions: string[];
   description: string;
   photos: string[];
   cost: number;
+  cost_unit: string;
   cookingTime: number; // in minutes
   createdAt: Date;
   updatedAt: Date;

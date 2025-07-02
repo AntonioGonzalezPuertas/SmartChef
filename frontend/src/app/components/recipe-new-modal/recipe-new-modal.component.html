@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ recipe?.id ? "Edit" : "New" }} Recipe</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="save()" [disabled]="form.invalid">Save</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()" color="medium">Cancel</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <form [formGroup]="form" class="recipe-form" (ngSubmit)="save()">
+    <ion-item>
+      <ion-label position="floating">Title</ion-label>
+      <ion-input formControlName="title" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Categories</ion-label>
+      <ion-input formControlName="categories"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea formControlName="description"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Photo URL</ion-label>
+      <ion-input formControlName="photos"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Cost</ion-label>
+      <ion-input type="number" formControlName="cost"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Cost Unit</ion-label>
+      <ion-input formControlName="cost_unit"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Cooking Time (min)</ion-label>
+      <ion-input type="number" formControlName="cookingTime"></ion-input>
+    </ion-item>
+
+    <!-- Ingredients Section -->
+    <div class="section-title">Ingredients</div>
+    <div formArrayName="ingredients">
+      <div
+        *ngFor="let ingCtrl of ingredients.controls; let i = index"
+        [formGroupName]="i"
+        class="ingredient-row"
+      >
+        <ion-item>
+          <ion-label>{{ ingCtrl.value.name }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Qty: </ion-label>
+          <ion-input type="number" formControlName="quantity"></ion-input>
+          <ion-label>{{ ingCtrl.value.units }}</ion-label>
+        </ion-item>
+        <ion-button
+          color="danger"
+          fill="clear"
+          (click)="removeIngredient(i)"
+          *ngIf="ingredients.length > 1"
+        >
+          <ion-icon name="remove-circle-outline"></ion-icon>
+        </ion-button>
+      </div>
+      <ion-button expand="block" fill="outline" (click)="addIngredient()">
+        <ion-icon name="add-circle-outline"></ion-icon>
+        Add Ingredient
+      </ion-button>
+    </div>
+
+    <!-- Instructions Section -->
+    <div class="section-title">Instructions</div>
+    <div formArrayName="instructions">
+      <div
+        *ngFor="let instCtrl of instructions.controls; let i = index"
+        [formGroupName]="i"
+        class="instruction-row"
+      >
+        <ion-item>
+          <ion-label position="floating">Step {{ i + 1 }}</ion-label>
+          <ion-input formControlName="text"></ion-input>
+        </ion-item>
+        <ion-button
+          color="danger"
+          fill="clear"
+          (click)="removeInstruction(i)"
+          *ngIf="instructions.length > 1"
+        >
+          <ion-icon name="remove-circle-outline"></ion-icon>
+        </ion-button>
+      </div>
+      <ion-button expand="block" fill="outline" (click)="addInstruction()">
+        <ion-icon name="add-circle-outline"></ion-icon>
+        Add Instruction
+      </ion-button>
+    </div>
+
+    <div class="form-actions">
+      <ion-button
+        expand="block"
+        type="submit"
+        [disabled]="form.invalid"
+        color="primary"
+      >
+        Save Recipe
+      </ion-button>
+    </div>
+  </form>
+</ion-content>

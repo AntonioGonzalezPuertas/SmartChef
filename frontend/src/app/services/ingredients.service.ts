@@ -84,7 +84,7 @@ export class IngredientService {
     };
     const result = await firstValueFrom(
       this.httpClient.post(
-        environment.BASE_URL + '/ingredients/create',
+        environment.BASE_URL + '/ingredients',
         ingredient,
         headers
       )

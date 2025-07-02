@@ -63,4 +63,73 @@ export class RecipesService implements OnInit {
     }
     return recipes;
   }
+
+  public async addRecipe(recipe: Recipe): Promise<any> {
+    const headers = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer `,
+      },
+    };
+    const result = await firstValueFrom(
+      this.httpClient.post(environment.BASE_URL + '/recipes', recipe, headers)
+    );
+    if (result) {
+      const currentRecipes = this.recipesSubject.getValue();
+      this.recipesSubject.next([...(<any>currentRecipes), result]);
+    } else {
+      console.error('Error adding recipe:', result);
+    }
+    return result;
+  }
+
+  public async updateRecipe(id: string, data: any): Promise<any> {
+    const headers = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer `,
+      },
+    };
+    const result = await firstValueFrom(
+      this.httpClient.put(
+        environment.BASE_URL + '/recipes/' + id,
+        data,
+        headers
+      )
+    );
+    if (result) {
+      const currentRecipes = this.recipesSubject.getValue();
+      const index = currentRecipes.findIndex((x) => x.id === id);
+      if (index !== -1) {
+        currentRecipes[index] = <Recipe>result;
+        this.recipesSubject.next([...currentRecipes]);
+      }
+    } else {
+      console.error('Error adding recipe:', result);
+    }
+    return result;
+  }
+
+  public async deleteRecipe(id: string): Promise<any> {
+    const headers = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer `,
+      },
+    };
+    const result = await firstValueFrom(
+      this.httpClient.delete(environment.BASE_URL + '/recipes/' + id, headers)
+    );
+    console.log('delete result', result);
+    if (result) {
+      const currentRecipes = this.recipesSubject.getValue();
+      const updatedRecipes = currentRecipes.filter(
+        (recipe) => recipe.id !== id
+      );
+      this.recipesSubject.next(updatedRecipes);
+    } else {
+      console.error('Error deleting recipe:', result);
+    }
+    return result;
+  }
 }

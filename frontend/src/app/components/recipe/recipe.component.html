@@ -36,22 +36,30 @@
 
     <div class="bottom-actions">
       <div class="icon-badge">
-        <mat-icon (click)="showInstructions()">play_arrow</mat-icon>
+        <mat-icon (click)="$event.stopPropagation(); showInstructions()"
+          >play_arrow</mat-icon
+        >
       </div>
       <div class="icon-badge">
-        <mat-icon (click)="showIngredients()">shopping_cart</mat-icon>
+        <mat-icon (click)="$event.stopPropagation(); showIngredients()"
+          >shopping_cart</mat-icon
+        >
 
         @if (missingStock > 0) {
         <ion-badge color="danger">{{ missingStock }}</ion-badge>
         }
       </div>
       <div class="icon-badge">
-        <mat-icon (click)="schedule()">insert_invitation</mat-icon>
+        <mat-icon (click)="$event.stopPropagation(); schedule()"
+          >insert_invitation</mat-icon
+        >
       </div>
       <div class="icon-badge">
-        <mat-icon class="favorite" (click)="toggleFavorite()">{{
-          recipe.favorite ? "star" : "star_outline"
-        }}</mat-icon>
+        <mat-icon
+          class="favorite"
+          (click)="$event.stopPropagation(); toggleFavorite()"
+          >{{ recipe.favorite ? "star" : "star_outline" }}</mat-icon
+        >
       </div>
     </div>
   </ion-card-content>

@@ -8,7 +8,6 @@ import {
   IonContent,
   IonFab,
   IonFabButton,
-  IonIcon,
   IonFabList,
 } from '@ionic/angular/standalone';
 
@@ -30,9 +29,7 @@ import { IngredientNewModalComponent } from '../components/ingredient-new-modal/
     IonItem,
     IonLabel,
     IngredientComponent,
-    IngredientDetailModalComponent,
     IonContent,
-    IonIcon,
     IonFab,
     IonFabButton,
     IonFabList,

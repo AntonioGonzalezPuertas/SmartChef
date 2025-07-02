@@ -6,14 +6,16 @@ const recipeSchema = new mongoose.Schema(
     categories: [String],
     ingredients: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Ingredient",
-        quantity: String,
+        id: { type: String },
+        quantity: { type: Number },
       },
     ],
     description: String,
+    instructions: [String], // Instructions for the recipe
+    favorite: Boolean,
     photos: [String],
     cost: Number,
+    cost_unit: String, // Unité de coût, par exemple "€", "$", etc.
     cookingTime: Number,
   },
   {
