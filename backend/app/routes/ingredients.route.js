@@ -4,5 +4,6 @@ const router = express.Router();
 
 router.post("/find", ingredientsController.find);
 router.post("/create", ingredientsController.create);
+router.put("/:id", ingredientsController.update);
 
 module.exports = router;

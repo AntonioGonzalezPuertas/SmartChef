@@ -4,6 +4,7 @@ const ingredientSchema = new mongoose.Schema(
   {
     name: String,
     categories: [String],
+    photo: String,
     shops: [String],
     units: String,
     stock: Number,

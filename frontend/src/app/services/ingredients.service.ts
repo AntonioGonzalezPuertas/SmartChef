@@ -75,7 +75,7 @@ export class IngredientService {
     return ingredients;
   }
 
-  public async addIngredient(ingredient: Ingredient) {
+  public async addIngredient(ingredient: Ingredient): Promise<any> {
     const headers = {
       headers: {
         'Content-Type': 'application/json',
@@ -98,13 +98,30 @@ export class IngredientService {
     return result;
   }
 
-  public async updateIngredient(ingredient: Ingredient) {
-    console.log('Updating ingredient:', ingredient);
-    const currentIngredients = this.ingredientsSubject.getValue();
-    const index = currentIngredients.findIndex((x) => x.id === ingredient.id);
-    if (index !== -1) {
-      currentIngredients[index] = ingredient;
-      this.ingredientsSubject.next([...currentIngredients]);
+  public async updateIngredient(ingredient: Ingredient): Promise<any> {
+    const headers = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer `,
+      },
+    };
+    const result = await firstValueFrom(
+      this.httpClient.put(
+        environment.BASE_URL + '/ingredients/' + ingredient.id,
+        ingredient,
+        headers
+      )
+    );
+    if (result) {
+      const currentIngredients = this.ingredientsSubject.getValue();
+      const index = currentIngredients.findIndex((x) => x.id === ingredient.id);
+      if (index !== -1) {
+        currentIngredients[index] = ingredient;
+        this.ingredientsSubject.next([...currentIngredients]);
+      }
+    } else {
+      console.error('Error adding ingredient:', result);
     }
+    return result;
   }
 }
