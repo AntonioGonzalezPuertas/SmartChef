@@ -51,20 +51,22 @@ export class IngredientService {
     return ingredient.quantity <= stock!;
   }
 
-  public async getIngredients(): Promise<any> {
+  public async getIngredients(filter?: any): Promise<any> {
     const headers = {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer `,
       },
     };
+    const body = filter || {};
     const ingredients = await firstValueFrom(
       this.httpClient.post(
-        environment.BASE_URL + '/ingredients/findAll',
-        {},
+        environment.BASE_URL + '/ingredients/find',
+        body,
         headers
       )
     );
+    console.log('ingredients', ingredients);
     if (ingredients) {
       this.ingredientsSubject.next(ingredients as Ingredient[]);
     } else {
@@ -74,29 +76,26 @@ export class IngredientService {
   }
 
   public async addIngredient(ingredient: Ingredient) {
-    const currentIngredients = this.ingredientsSubject.getValue();
-    this.ingredientsSubject.next([...(<any>currentIngredients), ingredient]);
-
-    // const headers = {
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     Authorization: `Bearer `,
-    //   },
-    // };
-    // const result = await firstValueFrom(
-    //   this.httpClient.post(
-    //     environment.BASE_URL + '/ingredients/add',
-    //     {},
-    //     headers
-    //   )
-    // );
-    // if (ingredient) {
-    //   const currentIngredients = this.ingredientsSubject.getValue();
-    //   this.ingredientsSubject.next([...(<any>currentIngredients), result]);
-    // } else {
-    //   console.error('Error adding ingredient:', result);
-    // }
-    // return result;
+    const headers = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer `,
+      },
+    };
+    const result = await firstValueFrom(
+      this.httpClient.post(
+        environment.BASE_URL + '/ingredients/create',
+        ingredient,
+        headers
+      )
+    );
+    if (result) {
+      const currentIngredients = this.ingredientsSubject.getValue();
+      this.ingredientsSubject.next([...(<any>currentIngredients), result]);
+    } else {
+      console.error('Error adding ingredient:', result);
+    }
+    return result;
   }
 
   public async updateIngredient(ingredient: Ingredient) {

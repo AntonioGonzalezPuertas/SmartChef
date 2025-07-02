@@ -41,17 +41,18 @@ export class RecipesService implements OnInit {
     }
   }
 
-  public async getRecipes(): Promise<any> {
+  public async getRecipes(filter?: any): Promise<any> {
     const headers = {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer `,
       },
     };
+    const body = filter || {};
     const recipes = await firstValueFrom(
       this.httpClient.post(
-        environment.BASE_URL + '/recipes/findAll',
-        {},
+        environment.BASE_URL + '/recipes/find',
+        body,
         headers
       )
     );
