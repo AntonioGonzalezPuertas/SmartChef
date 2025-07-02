@@ -98,7 +98,7 @@ export class IngredientService {
     return result;
   }
 
-  public async updateIngredient(ingredient: Ingredient): Promise<any> {
+  public async updateIngredient(id: string, data: any): Promise<any> {
     const headers = {
       headers: {
         'Content-Type': 'application/json',
@@ -107,16 +107,16 @@ export class IngredientService {
     };
     const result = await firstValueFrom(
       this.httpClient.put(
-        environment.BASE_URL + '/ingredients/' + ingredient.id,
-        ingredient,
+        environment.BASE_URL + '/ingredients/' + id,
+        data,
         headers
       )
     );
     if (result) {
       const currentIngredients = this.ingredientsSubject.getValue();
-      const index = currentIngredients.findIndex((x) => x.id === ingredient.id);
+      const index = currentIngredients.findIndex((x) => x.id === id);
       if (index !== -1) {
-        currentIngredients[index] = ingredient;
+        currentIngredients[index] = <Ingredient>result;
         this.ingredientsSubject.next([...currentIngredients]);
       }
     } else {
