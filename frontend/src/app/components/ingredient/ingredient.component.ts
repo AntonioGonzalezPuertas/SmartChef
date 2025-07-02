@@ -18,6 +18,8 @@ import {
   starOutline,
 } from 'ionicons/icons';
 
+import { IngredientService } from 'src/app/services/ingredients.service';
+
 @Component({
   selector: 'app-ingredient',
   templateUrl: './ingredient.component.html',
@@ -34,6 +36,7 @@ import {
 })
 export class IngredientComponent implements OnInit {
   @Input() ingredient: any;
+  private ingredientService = new IngredientService();
 
   constructor() {
     addIcons({ basket, play, cashOutline, timeOutline, starOutline });
@@ -47,6 +50,9 @@ export class IngredientComponent implements OnInit {
     } else if (action === 'remove' && this.ingredient.stock > 0) {
       this.ingredient.stock = this.ingredient.stock - 1;
     }
+    this.ingredientService.updateIngredient(this.ingredient.id, {
+      stock: this.ingredient.stock,
+    });
   }
 
   public updateOrdered(action: string) {
@@ -58,5 +64,9 @@ export class IngredientComponent implements OnInit {
       this.ingredient.ordered = this.ingredient.ordered - 1;
       this.ingredient.stock = this.ingredient.stock + 1;
     }
+    this.ingredientService.updateIngredient(this.ingredient.id, {
+      stock: this.ingredient.stock,
+      ordered: this.ingredient.ordered,
+    });
   }
 }

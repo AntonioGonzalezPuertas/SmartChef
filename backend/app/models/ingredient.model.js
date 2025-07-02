@@ -9,6 +9,8 @@ const ingredientSchema = new mongoose.Schema(
     units: String,
     stock: Number,
     min_stock: Number,
+    ordered: Number,
+    description: String,
     price: Number,
     price_unit: String,
   },
