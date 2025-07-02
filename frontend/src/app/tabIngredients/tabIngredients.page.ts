@@ -80,15 +80,26 @@ export class tabIngredientsPage {
   }[] {
     const grouped: { [key: string]: Ingredient[] } = {};
     for (const ing of this.filteredIngredients) {
-      for (const cat of ing.categories) {
-        if (!grouped[cat]) grouped[cat] = [];
-        grouped[cat].push(ing);
+      // If ing.categories is empty or not present, add to "Others"
+      if (!ing.categories || ing.categories.length === 0) {
+        if (!grouped['Others']) grouped['Others'] = [];
+        grouped['Others'].push(ing);
+      } else {
+        for (const cat of ing.categories) {
+          if (!grouped[cat]) grouped[cat] = [];
+          grouped[cat].push(ing);
+        }
       }
     }
-    return Object.entries(grouped).map(([category, ingredients]) => ({
-      category,
-      ingredients,
-    }));
+    // Convert to array and sort so "Others" is last
+    const entries = Object.entries(grouped)
+      .map(([category, ingredients]) => ({ category, ingredients }))
+      .sort((a, b) => {
+        if (a.category === 'Others') return 1;
+        if (b.category === 'Others') return -1;
+        return a.category.localeCompare(b.category);
+      });
+    return entries;
   }
 
   public async clickAction(ingredientId: string) {
