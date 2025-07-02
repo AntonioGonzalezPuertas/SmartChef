@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>New Ingredient</ion-title>
+    <ion-title>{{ ingredient?.id ? "Edit" : "New" }} Ingredient</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="save()" [disabled]="form.invalid">Save</ion-button>
     </ion-buttons>
