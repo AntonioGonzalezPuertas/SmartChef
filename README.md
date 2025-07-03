@@ -31,7 +31,7 @@ SmartChef is a fullstack application designed to help users manage their kitchen
   - LogIn by email/password
   - Sessions are stored to keep statistiques.
   - JWT is used received on LogIn to authenticate the requests
-    - Profiles: Edit, Delete, Logout, ChangePassword, PostRequestAdmin
+    - Profiles: Edit, Delete, ut, ChangePassword, PostRequestAdmin
     - Projects: Create, Edit, Delete
   - Using google OAth 2.0 (functionality removed):
     - Removed to simplify the code and because it requires sharing my google development accocunt, but the fonctionality ready to cherrypick in the branch "add Login with Google OAuth2.0"
@@ -47,9 +47,7 @@ SmartChef is a fullstack application designed to help users manage their kitchen
 
 ---
 
-<img src=".\Doc\login.PNG" alt="logo" height="300" />
-<img src=".\Doc\signup.PNG" alt="logo" height="300" />
-<img src=".\Doc\forgot_password.PNG" alt="logo" height="300" />
+<img src=".\Doc\login.PNG" alt="" height="300" /> <img src=".\Doc\signup.PNG" alt="" height="300" /> <img src=".\Doc\forgot_password.PNG" alt="" height="300" />
 
 ## Implementation Details
 
@@ -88,7 +86,7 @@ The frontend is built with **Angular** and **Ionic**, providing a modern, mobile
   - **Notifications:** Notifies you of ingredients that need restocking.
   - **Recommended Recipes:** Displays three random recipes for inspiration.
 
-<img src=".\Doc\Home.PNG" alt="logo" height="300" />
+<img src=".\Doc\Home.PNG" alt="" height="300" />
 
 - **Ingredients (`tabIngredients`):**
 
@@ -97,10 +95,7 @@ The frontend is built with **Angular** and **Ionic**, providing a modern, mobile
   - Add, edit, or delete ingredients.
   - See ingredient details, including stock and description.
 
-<img src=".\Doc\Ingredients.PNG" alt="logo" height="300" />
-<img src=".\Doc\Ingredients_actions.PNG" alt="logo" height="300" />
-<img src=".\Doc\Ingredients_details.PNG" alt="logo" height="300" />
-<img src=".\Doc\Ingredients_edit.PNG" alt="logo" height="300" />
+<img src=".\Doc\Ingredients.PNG" alt="" height="300" /> <img src=".\Doc\Ingredients_actions.PNG" alt="" height="300" /> <img src=".\Doc\Ingredients_details.PNG" alt="" height="300" /> <img src=".\Doc\Ingredients_edit.PNG" alt="" height="300" />
 
 - **Recipes (`tabRecipes`):**
 
@@ -109,20 +104,17 @@ The frontend is built with **Angular** and **Ionic**, providing a modern, mobile
   - View recipe details, including ingredients, instructions, and photos.
   - Add or edit recipes with dynamic ingredient and instruction fields.
 
-<img src=".\Doc\Recipes.PNG" alt="logo" height="300" />
-<img src=".\Doc\Recipes_details.PNG" alt="logo" height="300" />
-<img src=".\Doc\Recipes_edit.PNG" alt="logo" height="300" />
-<img src=".\Doc\Recipes_ing_control.PNG" alt="logo" height="300" />
+<img src=".\Doc\Recipes.PNG" alt="" height="300" /> <img src=".\Doc\Recipes_details.PNG" alt="" height="300" /> <img src=".\Doc\Recipes_edit.PNG" alt="" height="300" /> <img src=".\Doc\Recipes_ing_control.PNG" alt="" height="300" />
 
 ---
 
-<img src=".\Doc\Recipes_play.PNG" alt="logo" height="300" />
+<img src=".\Doc\Recipes_play.PNG" alt="" height="300" />
 
 ---
 
 **Schedule (`tabHome & tabRecipes`):**
 
-<img src=".\Doc\Schedule_insert.PNG" alt="logo" height="300" />
+<img src=".\Doc\Schedule_insert.PNG" alt="" height="300" />
 
 ### Frontend Technologies
 
