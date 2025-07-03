@@ -27,6 +27,51 @@ SmartChef is a fullstack application designed to help users manage their kitchen
 - **Ingredient Tracking:** Manage your pantry, track stock, and get low-stock notifications.
 - **Smart Recommendations:** Get daily recipe recommendations.
 - **Shopping List:** Generate shopping lists.
+- **User Authentication:** Sign up, log in, and log out securely.
+  - LogIn by email/password
+  - Sessions are stored to keep statistiques.
+  - JWT is used received on LogIn to authenticate the requests
+    - Profiles: Edit, Delete, Logout, ChangePassword, PostRequestAdmin
+    - Projects: Create, Edit, Delete
+  - Using google OAth 2.0 (functionality removed):
+    - Removed to simplify the code and because it requires sharing my google development accocunt, but the fonctionality ready to cherrypick in the branch "add Login with Google OAuth2.0"
+    - To be used, create file "environment.prod.ts" with a google client id for the project
+  - Change password
+  - Forgot password link request
+    - Send email with a link to reset password
+    - A second email is sent with a random password to access to the account and be able to change the password
+      <img src=".\Doc\ResetPasswordEmail.PNG" alt="App Screenshot"/>
+- **Profile Creation:** Create a profile with a unique username and password.
+  - Sign up with email validation (JWT token)
+    <img src=".\Doc\validationEmail.PNG" alt="App Screenshot"/>
+
+---
+
+<img src=".\Doc\login.PNG" alt="logo" style="max-height:300px;vertical-align:middle;"/>
+<img src=".\Doc\signup.PNG" alt="logo" style="max-height:300px;vertical-align:middle;"/>
+<img src=".\Doc\forgot_password.PNG" alt="logo" style="max-height:300px;vertical-align:middle;"/>
+
+## Implementation Details
+
+**State Management:** Uses RxJS BehaviorSubject for authentication and profile state.
+
+**Routing:** Angular Router with route guards for protected pages.
+
+**Forms:** Reactive Forms for validation and user input.
+
+**API Communication:** HTTPClient for RESTful API calls.
+
+**Error Handling:** Toast notifications for user feedback.
+
+---
+
+## Technologies Used
+
+**Frontend:** Angular, Ionic, TypeScript, RxJS, SCSS
+
+**Authentication:** JWT, Google OAuth 2.0
+
+**Other:** REST API, RxJS Observables, Responsive Design
 
 ---
 
@@ -43,12 +88,19 @@ The frontend is built with **Angular** and **Ionic**, providing a modern, mobile
   - **Notifications:** Notifies you of ingredients that need restocking.
   - **Recommended Recipes:** Displays three random recipes for inspiration.
 
+<img src=".\Doc\Home.PNG" alt="logo" style="max-height:300px;vertical-align:middle;"/>
+
 - **Ingredients (`tabIngredients`):**
 
   - View, search, and filter all ingredients.
   - Group ingredients by category.
   - Add, edit, or delete ingredients.
   - See ingredient details, including stock and description.
+
+<img src=".\Doc\Ingredients.PNG" alt="logo" style="max-height:300px;vertical-align:middle;"/>
+<img src=".\Doc\Ingredients_actions.PNG" alt="logo" style="max-height:300px;vertical-align:middle;"/>
+<img src=".\Doc\Ingredients_details.PNG" alt="logo" style="max-height:300px;vertical-align:middle;"/>
+<img src=".\Doc\Ingredients_edit.PNG" alt="logo" style="max-height:300px;vertical-align:middle;"/>
 
 - **Recipes (`tabRecipes`):**
 
@@ -57,7 +109,20 @@ The frontend is built with **Angular** and **Ionic**, providing a modern, mobile
   - View recipe details, including ingredients, instructions, and photos.
   - Add or edit recipes with dynamic ingredient and instruction fields.
 
--
+<img src=".\Doc\Recipes.PNG" alt="logo" style="max-height:300px;vertical-align:middle;"/>
+<img src=".\Doc\Recipes_details.PNG" alt="logo" style="max-height:300px;vertical-align:middle;"/>
+<img src=".\Doc\Recipes_edit.PNG" alt="logo" style="max-height:300px;vertical-align:middle;"/>
+<img src=".\Doc\Recipes_ing_control.PNG" alt="logo" style="max-height:300px;vertical-align:middle;"/>
+
+---
+
+<img src=".\Doc\Recipes_play.PNG" alt="logo" style="max-height:300px;vertical-align:middle;"/>
+
+---
+
+**Schedule (`tabHome & tabRecipes`):**
+
+<img src=".\Doc\Schedule_insert.PNG" alt="logo" style="max-height:300px;vertical-align:middle;"/>
 
 ### Frontend Technologies
 
@@ -150,6 +215,8 @@ The backend is built with **Node.js** and **Express**, using **MongoDB** for dat
 - Unit, E2E and integration tests.
 - Code cleaning, removing unused styles and imports.
 - More exaustive error control
+- Cookies management
+- Profiles Management for users ( Information edit and password change)
 
 ## License
 
