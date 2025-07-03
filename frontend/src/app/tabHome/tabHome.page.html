@@ -7,40 +7,12 @@
     </p>
   </div>
 
-  <!-- Notifications: Ingredients with No Stock -->
-  <div class="notifications-section">
-    <h2>Notifications</h2>
-    @for(ing of outOfStockIngredients; track ing) {
-    <div class="notification-message">
-      <ion-icon name="alert-circle-outline" color="danger"></ion-icon>
-      <span>{{ ing.name }} is out of stock!</span>
-    </div>
-    }
-  </div>
+  <!-- Today's Recipes -->
+  <app-today></app-today>
 
-  <!-- Week Menu -->
-  <div class="week-menu-section">
-    <h2>This Week's Menu</h2>
-    <ion-list>
-      @for(day of weekMenu; track day) {
-      <ion-item>
-        <ion-label>
-          <strong>{{ day.name }}</strong><br />
-          Lunch: {{ day.lunchRecipe?.title || 'Not assigned' }}<br />
-          Dinner: {{ day.dinnerRecipe?.title || 'Not assigned' }}
-        </ion-label>
-      </ion-item>
-      }
-    </ion-list>
-  </div>
+  <!-- Notifications: Ingredients with No Stock -->
+  <app-notifications></app-notifications>
 
   <!-- New Recipes Recommendations -->
-  <div class="recommendations-section">
-    <h2>New Recipe Recommendations</h2>
-    <div class="recommendations-list">
-      @for(recipe of recommendedRecipes; track recipe) {
-      <app-recipe [recipe]="recipe"></app-recipe>
-      }
-    </div>
-  </div>
+  <app-recommendations></app-recommendations>
 </ion-content>

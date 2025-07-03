@@ -1,0 +1,8 @@
+<div class="recommendations-section">
+  <h2>New Recipe Recommendations</h2>
+  <div class="recommendations-list">
+    @for(recipe of recommendedRecipes; track recipe) {
+    <app-recipe [recipe]="recipe"></app-recipe>
+    }
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<!-- Week Menu -->
+<div class="week-menu-section">
+  <h2>Let's cook today!</h2>
+  <ion-list>
+    @for(day of weekMenu; track day) {
+    <ion-item>
+      <ion-label>
+        <strong>{{ day.name }}</strong
+        ><br />
+        Lunch: {{ day.lunchRecipe?.title || "Not assigned" }}<br />
+        Dinner: {{ day.dinnerRecipe?.title || "Not assigned" }}
+      </ion-label>
+    </ion-item>
+    }
+  </ion-list>
+</div>

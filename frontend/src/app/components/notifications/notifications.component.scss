@@ -1,0 +1,43 @@
+.notifications-section {
+  margin-bottom: 1.5rem;
+
+  h2 {
+    font-size: 1.2rem;
+    color: #eb445a;
+    margin-bottom: 0.5rem;
+  }
+
+  .warning-message {
+    display: flex;
+    align-items: center;
+    background: #fff4f4;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    color: #eeb13f;
+    font-weight: 500;
+    box-shadow: 0 1px 4px rgba(235, 68, 90, 0.07);
+
+    ion-icon {
+      margin-right: 0.6rem;
+      font-size: 1.3rem;
+    }
+  }
+
+  .alert-message {
+    display: flex;
+    align-items: center;
+    background: #fff4f4;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    color: #b00020;
+    font-weight: 500;
+    box-shadow: 0 1px 4px rgba(235, 68, 90, 0.07);
+
+    ion-icon {
+      margin-right: 0.6rem;
+      font-size: 1.3rem;
+    }
+  }
+}

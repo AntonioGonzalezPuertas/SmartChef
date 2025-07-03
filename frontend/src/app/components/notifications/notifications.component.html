@@ -1,0 +1,13 @@
+<div class="notifications-section">
+  <h2>Notifications</h2>
+  @for(ing of outOfStockIngredients; track ing) {
+  <div class="alert-message" *ngIf="ing.notification == 'out-of-stock'">
+    <ion-icon name="alert-circle-outline" color="danger"></ion-icon>
+    <span>{{ ing.name }} is out of stock!</span>
+  </div>
+  <div class="warning-message" *ngIf="ing.notification == 'out-of-min-stock'">
+    <ion-icon name="warning-outline" color="warning"></ion-icon>
+    <span>{{ ing.name }} is running low!</span>
+  </div>
+  }
+</div>
