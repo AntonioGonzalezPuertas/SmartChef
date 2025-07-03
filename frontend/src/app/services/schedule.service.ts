@@ -136,4 +136,42 @@ export class ScheduleService implements OnInit {
     }
     return result;
   }
+
+  public getToday(period: string): Schedule {
+    const today = new Date();
+    const localDate = this.getLocalDate(today);
+    const todayString = this.getLocalDateString(localDate);
+
+    const schedule = this.scheduleSubject.getValue().filter((schedule) => {
+      const scheduleDate =
+        schedule.date instanceof Date
+          ? this.getLocalDateString(schedule.date)
+          : schedule.date;
+      return (
+        scheduleDate.toString().split('T')[0] === todayString &&
+        period === schedule.period
+      );
+    });
+
+    return schedule[0];
+  }
+
+  private getLocalDateString(date: Date): string {
+    return [
+      date.getFullYear(),
+      String(date.getMonth() + 1).padStart(2, '0'),
+      String(date.getDate()).padStart(2, '0'),
+    ].join('-');
+  }
+  private getLocalDate(date: Date): Date {
+    // Set to noon local time to avoid UTC offset issues
+    return new Date(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate(),
+      12,
+      0,
+      0
+    );
+  }
 }

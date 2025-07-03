@@ -1,16 +1,28 @@
 <!-- Week Menu -->
 <div class="week-menu-section">
   <h2>Let's cook today!</h2>
-  <ion-list>
-    @for(day of weekMenu; track day) {
-    <ion-item>
+  <ion-list class="today-menu">
+    <ion-label>
+      <strong>{{ lunch?.date | date : "EEEE, MMMM d " }}</strong></ion-label
+    >
+    <ion-item (click)="openRecipe(lunch?.recipes)">
       <ion-label>
-        <strong>{{ day.name }}</strong
-        ><br />
-        Lunch: {{ day.lunchRecipe?.title || "Not assigned" }}<br />
-        Dinner: {{ day.dinnerRecipe?.title || "Not assigned" }}
+        <strong>Lunch:</strong> {{ lunch?.recipes?.title || "Not assigned" }}
+        <span *ngIf="lunch?.recipes?.title"
+          >- {{ lunch?.recipes?.cookingTime || 0 }} min
+        </span>
       </ion-label>
+      <mat-icon>play_arrow</mat-icon>
     </ion-item>
-    }
+    <ion-item (click)="openRecipe(dinner?.recipes)">
+      <ion-label>
+        <strong>Dinner:</strong>
+        {{ dinner?.recipes?.title || "Not assigned" }}
+        <span *ngIf="dinner?.recipes?.title"
+          >- {{ dinner?.recipes?.cookingTime || 0 }} min
+        </span>
+      </ion-label>
+      <mat-icon *ngIf="dinner?.recipes?.title">play_arrow</mat-icon>
+    </ion-item>
   </ion-list>
 </div>
