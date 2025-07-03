@@ -14,6 +14,17 @@
       }
       <div class="toolbar-content">
         <ion-img src="./assets/icon/logo.png" class="logo"></ion-img>
+        @if(auth.isLoggedIn){
+        <div class="user-info">
+          <ion-label class="Wellcome">Wellcome {{ profile?.name }}!</ion-label>
+          <ion-icon
+            name="log-out"
+            size="large"
+            class="logout-icon"
+            (click)="logout()"
+          ></ion-icon>
+        </div>
+        }
       </div>
     </ion-toolbar>
   </ion-header>

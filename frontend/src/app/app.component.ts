@@ -9,6 +9,7 @@ import {
   IonToolbar,
   IonButtons,
   IonButton,
+  IonLabel,
 } from '@ionic/angular/standalone';
 import { NavigationEnd, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -30,6 +31,7 @@ import {
 } from 'ionicons/icons';
 
 import { Location } from '@angular/common';
+import { AuthService } from './services/auth.service';
 
 addIcons({
   'images-outline': imagesOutline,
@@ -57,23 +59,63 @@ addIcons({
     IonImg,
     IonButtons,
     IonButton,
+    IonLabel,
   ],
 })
 export class AppComponent {
+  public auth = inject(AuthService);
   private router = inject(Router);
   public profile: any;
 
   private location = inject(Location);
   public showBackButton: boolean = false;
   public isSignUp: boolean = false; // Flag to toggle between login and signup
-  public isAccountPage: boolean = false; // Flag to check if the current page is an account page
+  public isHomenPage: boolean = false; // Flag to check if the current page is an account page
   constructor() {
     addIcons({ logOut, arrowBackOutline });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // Subscribe to profile updates
+    this.auth.profile$.subscribe((updatedProfile) => {
+      this.profile = updatedProfile;
+    });
 
-  goBack() {}
+    this.auth.enabledSignUp$.subscribe((value: any) => {
+      this.showBackButton = value;
+      this.isSignUp = value;
+    });
 
-  logout() {}
+    this.auth.enabledSignUp$.subscribe((value: any) => {
+      this.showBackButton = value;
+      this.isSignUp = value;
+    });
+
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.isHomenPage = this.location.path().includes('/home');
+        if (this.location.isCurrentPathEqualTo('/login')) {
+          this.showBackButton = this.isSignUp; // Hide back button on login page
+        } else {
+          this.showBackButton = false; // Show back button on other pages
+        }
+      }
+    });
+  }
+
+  goBack() {
+    if (this.location.path().includes('/login')) {
+      this.auth.isSignUp = false; // Reset the sign-up flag
+    } else {
+      this.location.back(); // Navigate back to the previous page
+    }
+  }
+
+  logout() {
+    this.auth.logout();
+    this.auth.isLoggedIn = false;
+    this.router.navigate(['/login'], {
+      queryParams: { reload: true },
+    }); // Add a query parameter
+  }
 }

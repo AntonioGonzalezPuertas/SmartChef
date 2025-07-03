@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { AuthGuard } from '../guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -10,11 +11,13 @@ export const routes: Routes = [
         path: 'home',
         loadComponent: () =>
           import('../tabHome/tabHome.page').then((m) => m.tabHomePage),
+        canActivate: [AuthGuard], // Protect the account route
       },
       {
         path: 'recipes',
         loadComponent: () =>
           import('../tabRecipes/tabRecipes.page').then((m) => m.tabRecipesPage),
+        canActivate: [AuthGuard], // Protect the account route
       },
       {
         path: 'ingredient',
@@ -22,6 +25,7 @@ export const routes: Routes = [
           import('../tabIngredients/tabIngredients.page').then(
             (m) => m.tabIngredientsPage
           ),
+        canActivate: [AuthGuard], // Protect the account route
       },
       {
         path: '',

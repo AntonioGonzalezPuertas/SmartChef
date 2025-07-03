@@ -1,0 +1,88 @@
+<ion-content [fullscreen]="true">
+  <div class="login-container">
+    <h2>
+      <a (click)="byPass()">{{ isSignUp ? "Sign up" : "Login" }}</a>
+    </h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div *ngIf="isSignUp" class="form-group">
+        <label for="name">Name:</label>
+        <input
+          id="name"
+          type="text"
+          formControlName="name"
+          placeholder="Enter your name"
+        />
+        <div
+          *ngIf="
+            loginForm.get('name')?.invalid && loginForm.get('name')?.touched
+          "
+          class="error"
+        >
+          <small *ngIf="loginForm.get('name')?.errors?.['required']"
+            >Name is required.</small
+          >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email: (tester&#64;gmail.com)</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="Enter your email"
+        />
+        <div
+          *ngIf="
+            loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+          "
+          class="error"
+        >
+          <small *ngIf="loginForm.get('email')?.errors?.['required']"
+            >Email is required.</small
+          >
+          <small *ngIf="loginForm.get('email')?.errors?.['email']"
+            >Invalid email format.</small
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password: (1234)</label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          placeholder="Enter your password"
+        />
+        <div
+          *ngIf="
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.touched
+          "
+          class="error"
+        >
+          <small *ngIf="loginForm.get('password')?.errors?.['required']"
+            >Password is required.</small
+          >
+          <small *ngIf="loginForm.get('password')?.errors?.['minlength']">
+            Password must be at least 4 characters long.
+          </small>
+        </div>
+        <ion-nav-link class="nav-link" (click)="openForgotPasswordModal()"
+          >Forgot your password?</ion-nav-link
+        >
+      </div>
+
+      <ion-button type="submit" [disabled]="loginForm.invalid">{{
+        isSignUp ? "Sign up" : "Login"
+      }}</ion-button>
+    </form>
+
+    <div *ngIf="!isSignUp" class="signup-container">
+      <p>Don't have an account?</p>
+      <ion-button mat-button (click)="enableSignUp()" class="signup-button"
+        >Sign Up</ion-button
+      >
+    </div>
+  </div>
+</ion-content>

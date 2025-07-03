@@ -1,0 +1,72 @@
+ion-toolbar {
+  --background: linear-gradient(
+    45deg,
+    #4d65b4,
+    #fdfdfd
+  ); /* Adds a gradient background */
+  --color: rgb(250, 249, 249); /* Sets the text color */
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow below the header */
+  --padding-start: 16px; /* Adds padding to the toolbar */
+  --padding-end: 16px;
+}
+
+ion-title {
+  font-size: 1.5rem; /* Increases the font size of the title */
+  font-weight: bold; /* Makes the title bold */
+  text-align: left; /* Centers the title */
+}
+
+ion-content {
+  --background: #bed0f7; /* Sets a light background color */
+  padding: 20px; /* Adds padding around the content */
+}
+
+.login-container {
+  max-width: 400px;
+  width: 90%;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+h2 {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+ion-button {
+  width: 100%;
+
+  cursor: pointer;
+}
+
+ion-button:disabled {
+  background-color: #ccc;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+ion-nav-link.nav-link {
+  color: blue;
+  display: block;
+  margin-top: 10px;
+}
