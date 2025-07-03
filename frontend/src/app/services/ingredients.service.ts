@@ -66,7 +66,6 @@ export class IngredientService {
         headers
       )
     );
-    console.log('ingredients', ingredients);
     if (ingredients) {
       this.ingredientsSubject.next(ingredients as Ingredient[]);
     } else {
