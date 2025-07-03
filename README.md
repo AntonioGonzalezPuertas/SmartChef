@@ -1,40 +1,160 @@
-# SmartChef <img src=".\Doc\logo.png" alt="logo"/>
+<img src=".\Doc\logo.png" alt="logo" style="max-height:68px;vertical-align:middle;"/>
 
-This web application was developed as part of a FullStack course. ...
-The app demonstrates modern web development practices using Angular (frontend), Node.js/Express (backend) and MongoDB (database).
+# SmartChef
 
----
-
-## What is SmarChef?
+SmartChef is a fullstack application designed to help users manage their kitchen, plan meals, track ingredients, and discover new recipes with ease. This README explains the main sections, functionalities, and technologies used in both the frontend and backend of SmartChef.
 
 ---
 
-## Main Functionalities
+## Table of Contents
+
+- [Features](#features)
+- [Frontend](#frontend)
+  - [Main Sections](#main-sections)
+  - [Technologies Used](#frontend-technologies)
+- [Backend](#backend)
+  - [API Endpoints & Models](#api-endpoints--models)
+  - [Technologies Used](#backend-technologies)
+- [How It Works](#how-it-works)
+- [Setup & Installation](#setup--installation)
 
 ---
 
-## Implementation Details
+## Features
+
+- **Meal Planning:** Plan your meals for each day (lunch, dinner, etc.) and view your weekly schedule.
+- **Recipe Management:** Add, edit, and view recipes with ingredients, instructions, photos, and categories.
+- **Ingredient Tracking:** Manage your pantry, track stock, and get low-stock notifications.
+- **Smart Recommendations:** Get daily recipe recommendations.
+- **Shopping List:** Generate shopping lists.
 
 ---
 
-## Technologies Used
+## Frontend
+
+The frontend is built with **Angular** and **Ionic**, providing a modern, mobile-friendly user interface.
+
+### Main Sections
+
+- **Home (`tabHome`):**
+
+  - Welcome header with app icon and slogan.
+  - **Today's Recipes:** Shows the meals planned for today.
+  - **Notifications:** Notifies you of ingredients that need restocking.
+  - **Recommended Recipes:** Displays three random recipes for inspiration.
+
+- **Ingredients (`tabIngredients`):**
+
+  - View, search, and filter all ingredients.
+  - Group ingredients by category.
+  - Add, edit, or delete ingredients.
+  - See ingredient details, including stock and description.
+
+- **Recipes (`tabRecipes`):**
+
+  - Browse all recipes.
+  - Search and filter recipes by category or keyword.
+  - View recipe details, including ingredients, instructions, and photos.
+  - Add or edit recipes with dynamic ingredient and instruction fields.
+
+-
+
+### Frontend Technologies
+
+- **Angular**: Main framework for SPA structure.
+- **Ionic**: UI components for mobile-friendly design.
+- **RxJS**: Reactive programming for data streams.
+- **Angular Material**: Icons and some UI elements.
+- **SCSS**: For modern, responsive styling.
+- **TypeScript**: Strongly-typed codebase.
 
 ---
 
-## Folder Structure
+## Backend
 
-```text
-src/
-  app/
+The backend is built with **Node.js** and **Express**, using **MongoDB** for data storage.
 
-```
+### API Endpoints & Models
+
+- **Recipes (`/recipes`):**
+
+  - CRUD operations for recipes.
+  - Each recipe includes title, categories, ingredients (with quantity), instructions, favorite flag, photos, cost, and cooking time.
+
+- **Ingredients (`/ingredients`):**
+
+  - CRUD operations for ingredients.
+  - Each ingredient includes name, category, stock, units, and description.
+
+- **Schedule (`/schedule`):**
+
+  - Manage meal planning for each day and period (lunch, dinner, etc.).
+  - Assign recipes to specific days and meals.
+
+- **Authentication (optional/planned):**
+  - JWT-based authentication for secure access.
+
+#### Main Models
+
+- **Recipe:**  
+  Fields: `title`, `categories`, `ingredients` (with quantity), `instructions`, `favorite`, `photos`, `cost`, `cost_unit`, `cookingTime`, `createdAt`, `updatedAt`.
+
+- **Ingredient:**  
+  Fields: `name`, `categories`, `stock`, `units`, `description`, `createdAt`, `updatedAt`.
+
+- **Schedule:**  
+  Fields: `date`, `recipes`, `period`, `createdAt`, `updatedAt`.
+
+### Backend Technologies
+
+- **Node.js**: JavaScript runtime.
+- **Express**: Web framework for API endpoints.
+- **MongoDB**: NoSQL database for storing recipes, ingredients, and schedules.
+- **Mongoose**: Docker for MongoDB.
+- **JWT**: (Optional) Authentication.
 
 ---
 
-## Missing to implement
+## How It Works
 
-- ..
+1. **User logs in** (optional).
+2. **Home page** shows today's meals, low-stock alerts, and recommendations.
+3. **Ingredients** can be managed (add, edit, delete, view details).
+4. **Recipes** can be browsed, searched, and managed.
+5. **Schedule** allows planning meals for each day and period.
+6. **Recommendations** are generated randomly from available recipes.
+7. **All data** is synced with the backend via RESTful API calls.
+
+---
+
+## Setup & Installation
+
+### Backend
+
+1. `cd backend`
+2. `npm install`
+3. Configure your MongoDB connection in `.env` or config file.
+4. `npm start`
+
+### Frontend
+
+1. `cd frontend`
+2. `npm install`
+3. Update `environment.ts` with your backend API URL.
+4. `ionic serve` or `ng serve`
+
+---
+
+## Missing features
+
+- Unit, E2E and integration tests.
+- Code cleaning, removing unused styles and imports.
+- More exaustive error control
 
 ## License
 
-This project is for educational purposes as part of a FullStack course.
+MIT
+
+---
+
+**Enjoy using SmartChef – your smart kitchen companion!**
