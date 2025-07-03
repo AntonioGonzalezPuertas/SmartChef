@@ -64,6 +64,11 @@ export class RecipesService implements OnInit {
     return recipes;
   }
 
+  public getRecipeById(id: string): Recipe | undefined {
+    const recipes = this.recipesSubject.getValue();
+    return recipes.find((recipe) => recipe.id === id);
+  }
+
   public async addRecipe(recipe: Recipe): Promise<any> {
     const headers = {
       headers: {

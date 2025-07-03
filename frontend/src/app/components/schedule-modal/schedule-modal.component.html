@@ -2,10 +2,7 @@
   <ion-toolbar>
     <ion-title>Meal Schedule</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="save()">Save</ion-button>
-    </ion-buttons>
-    <ion-buttons slot="start">
-      <ion-button (click)="dismiss()">Cancel</ion-button>
+      <ion-button (click)="done()">Done</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -24,27 +21,31 @@
         <!-- Lunch line -->
         <div class="meal-section">
           <strong>Lunch:</strong>
-          <ng-container *ngIf="day.lunchRecipes.length; else addLunch">
-            <span
-              class="assigned-recipe"
-              *ngFor="let recipe of day.lunchRecipes; let i = index"
-            >
-              {{ recipe.title }}
+          <ng-container *ngIf="day.lunchRecipes.scheduleId; else addLunch">
+            <span class="assigned-recipe">
+              {{ day.lunchRecipes.title }}
               <ion-button
                 size="small"
                 fill="clear"
-                (click)="replaceRecipe(day, 'lunchRecipes', i)"
+                (click)="addRecipe(day.date, day.lunchRecipes, 'lunch')"
               >
                 <mat-icon>swap_horiz</mat-icon>
                 Replace
               </ion-button>
             </span>
+            <ion-button
+              color="danger"
+              fill="clear"
+              (click)="removeRecipe(day.lunchRecipes.scheduleId)"
+            >
+              <ion-icon name="remove-circle-outline"></ion-icon>
+            </ion-button>
           </ng-container>
           <ng-template #addLunch>
             <ion-button
               size="small"
               fill="outline"
-              (click)="addRecipe(day, 'lunchRecipes')"
+              (click)="addRecipe(day.date, day.lunchRecipes, 'lunch')"
             >
               <ion-icon name="add"></ion-icon>
               Add Recipe
@@ -55,27 +56,31 @@
         <!-- Dinner line -->
         <div class="meal-section">
           <strong>Dinner:</strong>
-          <ng-container *ngIf="day.dinnerRecipes.length; else addDinner">
-            <span
-              class="assigned-recipe"
-              *ngFor="let recipe of day.dinnerRecipes; let i = index"
-            >
-              {{ recipe.title }}
+          <ng-container *ngIf="day.dinnerRecipes.scheduleId; else addDinner">
+            <span class="assigned-recipe">
+              {{ day.dinnerRecipes.title }}
               <ion-button
                 size="small"
                 fill="clear"
-                (click)="replaceRecipe(day, 'dinnerRecipes', i)"
+                (click)="addRecipe(day.date, day.dinnerRecipes, 'dinner')"
               >
                 <mat-icon>swap_horiz</mat-icon>
                 Replace
               </ion-button>
             </span>
+            <ion-button
+              color="danger"
+              fill="clear"
+              (click)="removeRecipe(day.dinnerRecipes.scheduleId)"
+            >
+              <ion-icon name="remove-circle-outline"></ion-icon>
+            </ion-button>
           </ng-container>
           <ng-template #addDinner>
             <ion-button
               size="small"
               fill="outline"
-              (click)="addRecipe(day, 'dinnerRecipes')"
+              (click)="addRecipe(day.date, day.dinnerRecipes, 'dinner')"
             >
               <ion-icon name="add"></ion-icon>
               Add Recipe
