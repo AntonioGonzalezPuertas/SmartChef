@@ -1,18 +1,40 @@
-<ion-content class="ion-padding">
+<ion-content class="ion-padding home-content">
   <!-- App Title and Slogan -->
   <div class="home-header">
-    <h1>SmartChef</h1>
+    <h1>
+      <ion-icon name="restaurant-outline" class="logo-icon"></ion-icon>
+      SmartChef
+    </h1>
     <p class="slogan">
-      Your smart kitchen companion for effortless meal planning!
+      Your smart kitchen companion for
+      <span class="highlight">effortless meal planning</span>!
     </p>
   </div>
 
   <!-- Today's Recipes -->
-  <app-today></app-today>
+  <section class="home-section">
+    <h2>
+      <ion-icon name="sunny-outline"></ion-icon>
+      Let's cook today!
+    </h2>
+    <app-today></app-today>
+  </section>
 
   <!-- Notifications: Ingredients with No Stock -->
-  <app-notifications></app-notifications>
+  <section class="home-section">
+    <h2>
+      <ion-icon name="notifications"></ion-icon>
+      Notifications
+    </h2>
+    <app-notifications></app-notifications>
+  </section>
 
   <!-- New Recipes Recommendations -->
-  <app-recommendations></app-recommendations>
+  <section class="home-section">
+    <h2>
+      <ion-icon name="sparkles-outline"></ion-icon>
+      Recommended Recipes
+    </h2>
+    <app-recommendations></app-recommendations>
+  </section>
 </ion-content>

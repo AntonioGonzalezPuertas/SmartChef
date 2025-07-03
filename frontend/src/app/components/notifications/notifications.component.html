@@ -1,5 +1,4 @@
 <div class="notifications-section">
-  <h2>Notifications</h2>
   @for(ing of outOfStockIngredients; track ing) {
   <div class="alert-message" *ngIf="ing.stock == 0">
     <ion-icon name="alert-circle-outline" color="danger"></ion-icon>

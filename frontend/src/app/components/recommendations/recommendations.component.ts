@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   IonContent,
   IonIcon,
@@ -8,6 +8,8 @@ import {
 } from '@ionic/angular/standalone';
 
 import { RecipeComponent } from '../recipe/recipe.component';
+import { RecipesService } from 'src/app/services/recipes.service';
+import { Recipe } from 'src/app/models/recipe.model';
 
 @Component({
   selector: 'app-recommendations',
@@ -17,12 +19,16 @@ import { RecipeComponent } from '../recipe/recipe.component';
   imports: [RecipeComponent, IonContent, IonIcon, IonList, IonItem, IonLabel],
 })
 export class RecommendationsComponent implements OnInit {
-  recommendedRecipes = [
-    { title: 'Avocado Toast' /* ...other recipe data... */ },
-    { title: 'Quinoa Bowl' /* ...other recipe data... */ },
-    // ...add more recipes as needed
-  ];
+  private recipesService = inject(RecipesService);
+  private recipes: Recipe[] = [];
+  public recommendedRecipes: Recipe[] = [];
+
   constructor() {}
 
-  ngOnInit() {}
+  async ngOnInit() {
+    this.recipes = await this.recipesService.getRecipes();
+    this.recommendedRecipes = this.recipes
+      .sort(() => 0.5 - Math.random())
+      .slice(0, 3);
+  }
 }

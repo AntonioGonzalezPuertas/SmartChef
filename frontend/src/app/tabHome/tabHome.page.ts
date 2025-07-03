@@ -6,6 +6,13 @@ import {
   IonLabel,
   IonList,
 } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import {
+  restaurantOutline,
+  sunnyOutline,
+  sparklesOutline,
+  notifications,
+} from 'ionicons/icons';
 
 import { TodayComponent } from '../components/today/today.component';
 import { NotificationsComponent } from '../components/notifications/notifications.component';
@@ -27,7 +34,15 @@ import { RecommendationsComponent } from '../components/recommendations/recommen
   ],
 })
 export class tabHomePage {
-  constructor() {}
+  constructor() {
+    // Add icons to the ionicons library
+    addIcons({
+      restaurantOutline,
+      sunnyOutline,
+      sparklesOutline,
+      notifications,
+    });
+  }
 
   ngOnInit() {}
 }
