@@ -15,6 +15,7 @@ SmartChef is a fullstack application designed to help users manage their kitchen
 - [Backend](#backend)
   - [API Endpoints & Models](#api-endpoints--models)
   - [Technologies Used](#backend-technologies)
+- [Database](#database)
 - [How It Works](#how-it-works)
 - [Setup & Installation](#setup--installation)
 
@@ -104,11 +105,7 @@ The frontend is built with **Angular** and **Ionic**, providing a modern, mobile
   - View recipe details, including ingredients, instructions, and photos.
   - Add or edit recipes with dynamic ingredient and instruction fields.
 
-<img src=".\Doc\Recipes.PNG" alt="" height="300" /> <img src=".\Doc\Recipes_details.PNG" alt="" height="300" /> <img src=".\Doc\Recipes_edit.PNG" alt="" height="300" /> <img src=".\Doc\Recipes_ing_control.PNG" alt="" height="300" />
-
----
-
-<img src=".\Doc\Recipes_play.PNG" alt="" height="300" />
+<img src=".\Doc\Recipes.PNG" alt="" height="300" /> <img src=".\Doc\Recipes_details.PNG" alt="" height="300" /> <img src=".\Doc\Recipes_edit.PNG" alt="" height="300" /> <img src=".\Doc\Recipes_ing_control.PNG" alt="" height="300" /> <img src=".\Doc\Recipes_play.PNG" alt="" height="300" />
 
 ---
 
@@ -172,6 +169,107 @@ The backend is built with **Node.js** and **Express**, using **MongoDB** for dat
 
 ---
 
+### Database
+
+SmartChef uses **MongoDB** as its primary database to store all application data. MongoDB is a NoSQL, document-oriented database, which allows flexible and scalable storage of JSON-like documents.
+
+### Collections and Structure
+
+#### 1. **recipes**
+
+Stores all recipe documents.
+
+**Example structure:**
+
+```json
+{
+  "_id": ObjectId("..."),
+  "title": "Paella",
+  "categories": ["Spanish", "Seafood"],
+  "ingredients": [
+    { "id": "60f...", "quantity": 2 }
+  ],
+  "description": "A classic Spanish rice dish.",
+  "instructions": [
+    "Sauté onions and garlic.",
+    "Add rice and broth.",
+    "Add seafood and cook until done."
+  ],
+  "favorite": false,
+  "photos": ["https://..."],
+  "cost": 15,
+  "cost_unit": "€",
+  "cookingTime": 45,
+  "createdAt": "2025-07-03T12:00:00.000Z",
+  "updatedAt": "2025-07-03T12:00:00.000Z"
+}
+```
+
+#### 2. **ingredients**
+
+Stores all ingredients documents.
+
+**Example structure:**
+
+```json
+  {
+    "_id": ObjectId("..."),
+    "name": "Tomato in dices",
+    "categories": ["Vegetables"],
+    "shops": ["Local Market", "Lidel"],
+    "units": "piece",
+    "description": "",
+    "photo": "https://www.hunts.com/sites/g/files/qyyrlu211/files/images/products/diced-tomatoes-79288.png",
+    "stock": 0,
+    "min_stock": 2,
+    "ordered": 10,
+    "price": 100,
+    "price_unit": "CHF",
+    "createdAt": "2024-05-01T10:00:00Z",
+    "updatedAt": "2024-05-20T15:00:00Z"
+  }
+```
+
+#### 3. **schedule**
+
+Stores all schedule documents.
+
+**Example structure:**
+
+```json
+{
+    "_id": ObjectId("..."),
+    "date": "2025-07-02",
+    "recipes": ["1"],
+    "period": "dinner",
+    "createdAt": "2024-05-01T10:00:00Z",
+    "updatedAt": "2024-05-20T15:00:00Z"
+  }
+
+```
+
+#### 4. **profiles**
+
+Stores all ingredients documents.
+
+**Example structure:**
+
+```json
+{
+        "_id": ObjectId("..."),
+        "name": "Antonio",
+        "email": "antonio.gonzalez.puertas@gmail.com",
+        "isDeleted": false,
+        "isValidated": true,
+        "technologies": [],
+        "createdAt": "2025-07-03T13:00:36.203Z",
+        "updatedAt": "2025-07-03T13:30:30.987Z",
+        "__v": 0
+    }
+```
+
+---
+
 ## How It Works
 
 1. **User logs in** (optional).
@@ -210,9 +308,17 @@ The backend is built with **Node.js** and **Express**, using **MongoDB** for dat
 - Cookies management
 - Profiles Management for users ( Information edit and password change)
 
+## Disclaimer
+
+- The login, authorisation, guards, token security and many other features are implemented for demo proposes and not validated by the formateur.
+- The application is not intended for production use or grand public.
+
 ## License
 
-MIT
+This project is proprietary and all rights are reserved by the author.  
+The code and materials in this repository may not be used, copied, distributed, or incorporated into any coursework or educational material without explicit written permission from the author.
+
+Unauthorized use, reproduction, or distribution is strictly prohibited.
 
 ---
 
