@@ -30,14 +30,7 @@ SmartChef is a fullstack application designed to help users manage their kitchen
 - **Shopping List:** Generate shopping lists.
 - **User Authentication:** Sign up, log in, and log out securely.
   - LogIn by email/password
-  - Sessions are stored to keep statistiques.
   - JWT is used received on LogIn to authenticate the requests
-    - Profiles: Edit, Delete, ut, ChangePassword, PostRequestAdmin
-    - Projects: Create, Edit, Delete
-  - Using google OAth 2.0 (functionality removed):
-    - Removed to simplify the code and because it requires sharing my google development accocunt, but the fonctionality ready to cherrypick in the branch "add Login with Google OAuth2.0"
-    - To be used, create file "environment.prod.ts" with a google client id for the project
-  - Change password
   - Forgot password link request
     - Send email with a link to reset password
     - A second email is sent with a random password to access to the account and be able to change the password
@@ -68,7 +61,7 @@ SmartChef is a fullstack application designed to help users manage their kitchen
 
 **Frontend:** Angular, Ionic, TypeScript, RxJS, SCSS
 
-**Authentication:** JWT, Google OAuth 2.0
+**Authentication:** JWT
 
 **Other:** REST API, RxJS Observables, Responsive Design
 
@@ -154,7 +147,7 @@ The backend is built with **Node.js** and **Express**, using **MongoDB** for dat
   Fields: `title`, `categories`, `ingredients` (with quantity), `instructions`, `favorite`, `photos`, `cost`, `cost_unit`, `cookingTime`, `createdAt`, `updatedAt`.
 
 - **Ingredient:**  
-  Fields: `name`, `categories`, `stock`, `units`, `description`, `createdAt`, `updatedAt`.
+  Fields: `name`, `categories`, `stock`, `stock_in`,`ordered`,`price`,`price_unit`, `units`, `description`, `createdAt`, `updatedAt`.
 
 - **Schedule:**  
   Fields: `date`, `recipes`, `period`, `createdAt`, `updatedAt`.
@@ -319,7 +312,3 @@ This project is proprietary and all rights are reserved by the author.
 The code and materials in this repository may not be used, copied, distributed, or incorporated into any coursework or educational material without explicit written permission from the author.
 
 Unauthorized use, reproduction, or distribution is strictly prohibited.
-
----
-
-**Enjoy using SmartChef – your smart kitchen companion!**
