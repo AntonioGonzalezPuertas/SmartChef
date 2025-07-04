@@ -310,7 +310,7 @@ Stores all ingredients documents.
 
 ## Disclaimer
 
-- The login, authorisation, guards, token security and many other features are implemented for demo proposes and not validated by the formateur.
+- The login, authorisation, guards, token security and many other features are implemented for demo proposes and not learned or validated by the course.
 - The application is not intended for production use or grand public.
 
 ## License
